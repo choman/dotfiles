@@ -3,7 +3,7 @@
 
 # Install/Update yadm submodules
 yadm submodule update --init --remote
-(cd bashmarks; make)
+(cd bashmarks; make install)
 
 
 # gsettings list-recursively
