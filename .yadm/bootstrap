@@ -3,6 +3,7 @@
 declare -A class
 
 class["70:85:c2:06:09:a6"]="vboxvdi"
+class["08:00:27:17:b9:94"]="funstuff"
 
 # Install/Update yadm submodules
 yadm submodule update --init --remote
