@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+# Install/Update yadm submodules
+yadm submodule update --init --remote
+(cd bashmarks; make)
+
+
 # gsettings list-recursively
 # update some more system settings
 gsettings set com.canonical.indicator.datetime show-day true
