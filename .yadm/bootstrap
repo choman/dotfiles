@@ -9,8 +9,8 @@ yadm submodule update --init --remote
 (cd bashmarks; make install)
 
 
-echo "${!class[@]}"
-echo "${class[@]}"
+##echo "${!class[@]}"
+##echo "${class[@]}"
 for mac in $(ip addr show | grep ether | awk '{print $2}')
 do
     if [ -n "${class[$mac]}" ]; then  
