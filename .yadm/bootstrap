@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# gsettings list-recursively
+# update some more system settings
+gsettings set com.canonical.indicator.datetime show-day true
+gsettings set com.canonical.indicator.datetime show-date true
+gsettings set com.canonical.Unity integrated-menus true
+
+
+# dconf watch /
+dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
+dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/hsize 2
+dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
+dconf write /com/canonical/indicator/keyboard/visible false
+
+dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
+##dconf write /com/canonical/unity/launcher/favorites ['application://org.gnome.Nautilus.desktop', 'application://firefox.desktop', 'application://libreoffice-writer.desktop', 'application://libreoffice-calc.desktop', 'application://libreoffice-impress.desktop', 'application://org.gnome.Software.desktop', 'application://ubuntu-amazon-default.desktop', 'application://unity-control-center.desktop', 'application://virtualbox.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']
+
+##dconf write /org/compiz/profiles/unity/plugins/core/vsize 1
+##dconf write /org/compiz/profiles/unity/plugins/core/hsize 5
+##dconf write /org/compiz/profiles/unity/plugins/opengl/texture-filter 2
+##dconf write /org/compiz/profiles/unity/plugins/unityshell/alt-tab-bias-viewport false
+
+
