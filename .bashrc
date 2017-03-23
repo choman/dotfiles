@@ -163,6 +163,7 @@ export PATH="$PATH:$GOPATH/bin"
 [[ -d "/home/choman/.dotfiles/bin" ]]  && PATH="$PATH:/home/choman/.dotfiles/bin"
 
 source ~/.local/bin/bashmarks.sh
+source ~/bashmarks/bashmarks.sh
 
-chmod +x ~/.vocab
-~/.vocab
+##chmod +x ~/.vocab
+##~/.vocab
