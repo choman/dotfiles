@@ -1,9 +1,23 @@
 #!/bin/bash
 
+declare -A class
+
+class["70:85:c2:06:09:a6"]="vboxvdi2"
 
 # Install/Update yadm submodules
 yadm submodule update --init --remote
 (cd bashmarks; make install)
+
+
+echo "${!class[@]}"
+echo "${class[@]}"
+for mac in $(ip addr show | grep ether | awk '{print $2}')
+do
+    if [ -n "${class[$mac]}" ]; then  
+        #echo "$mac => ${class[$mac]}"
+        yadm config local.class ${class[$mac]}
+    fi
+done
 
 
 # gsettings list-recursively
