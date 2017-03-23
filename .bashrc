@@ -151,7 +151,7 @@ transfer() {
    # GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
    # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
    GIT_PROMPT_THEME=Single_line_Ubuntu
-   source ~/.bash-git-prompt/gitprompt.sh
+   source ~/bash-git-prompt/gitprompt.sh
 
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
