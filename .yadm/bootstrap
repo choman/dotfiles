@@ -44,7 +44,7 @@ dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/hsize 2
 dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
 
 # really not a vm then do stuff on physical system
-if $AMIVM; then
+if [ $AMIVM -ne 0 ]; then
     dconf write /com/canonical/indicator/keyboard/visible false
 fi
 
