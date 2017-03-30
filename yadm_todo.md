@@ -7,4 +7,6 @@ Things to do with yadm
 - bootstrap non-ppa installs?
    - appimage
    - snap
-
+- teleconsole
+- ssh programs
+- vpn stuff
