@@ -4,7 +4,7 @@ grep -q "^flags.*\ hypervisor\ " /proc/cpuinfo
 AMIVM=$?
 
 # Go home
-cd $HOME
+cd "$HOME" || echo "can't go to: $HOME"
 
 # setup classes
 declare -A class
