@@ -4,6 +4,3 @@
 [submodule "bash-git-prompt"]
 	path = bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt
-[submodule ".shellcheck"]
-	path = .shellcheck
-	url = https://github.com/koalaman/shellcheck.git
