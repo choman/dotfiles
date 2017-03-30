@@ -1,6 +1,6 @@
 #!/bin/bash
 
-grep -q ^flags.*\ hypervisor\  /proc/cpuinfo
+grep -q "^flags.*\ hypervisor\ " /proc/cpuinfo
 AMIVM=$?
 
 # Go home
