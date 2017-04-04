@@ -13,3 +13,9 @@ alias turtl="nohup /opt/turtl/turtl &"
 alias vdiadmin="sudo -i -u vdiadmin"
 alias telegram="nohup $HOME/Telegram/Telegram &"
 alias wire="nohup /opt/Wire/wire &"
+
+
+if [ -x "$HOME/.git-open/git-open" ]; then
+   alias git-open="$HOME/.git-open/git-open"
+fi
+

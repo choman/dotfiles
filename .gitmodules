@@ -4,3 +4,6 @@
 [submodule "bash-git-prompt"]
 	path = bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt
+[submodule ".git-open"]
+	path = .git-open
+	url = https://github.com/paulirish/git-open.git
