@@ -19,3 +19,4 @@ if [ -x "$HOME/.git-open/git-open" ]; then
    alias git-open="$HOME/.git-open/git-open"
 fi
 
+alias wtoday="curl http://wttr.in"
