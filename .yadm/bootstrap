@@ -3,6 +3,10 @@
 grep -q "^flags.*\ hypervisor\ " /proc/cpuinfo
 AMIVM=$?
 
+
+echo "AMIVM = ($AMIVM)"
+sleep 10
+
 # Go home
 cd "$HOME" || echo "can't go to: $HOME"
 
@@ -39,13 +43,13 @@ gsettings set com.canonical.Unity integrated-menus true
 
 
 # dconf watch /
-dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
 dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/hsize 2
 dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
+dconf write /com/canonical/indicator/keyboard/visible false
 
 # really not a vm then do stuff on physical system
 if [ $AMIVM -ne 0 ]; then
-    dconf write /com/canonical/indicator/keyboard/visible false
+   dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
 fi
 
 dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
