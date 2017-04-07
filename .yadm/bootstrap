@@ -3,10 +3,6 @@
 grep -q "^flags.*\ hypervisor\ " /proc/cpuinfo
 AMIVM=$?
 
-
-echo "AMIVM = ($AMIVM)"
-sleep 10
-
 # Go home
 cd "$HOME" || echo "can't go to: $HOME"
 
