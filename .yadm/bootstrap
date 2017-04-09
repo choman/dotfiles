@@ -3,6 +3,8 @@
 grep -q "^flags.*\ hypervisor\ " /proc/cpuinfo
 AMIVM=$?
 
+yadm_version=$(yadm version | awk '{print $2}')
+
 # Go home
 cd "$HOME" || echo "can't go to: $HOME"
 
@@ -19,6 +21,9 @@ yadm remote set-url origin https://choman@github.com/choman/dotfiles
 yadm submodule update --init --remote
 (cd bashmarks; make install)
 
+if [ ! -d "$HOME/.bash_completion.d" ]; then
+    mkdir -v $HOME/.bash_completion.d
+fi
 
 ##echo "${!class[@]}"
 ##echo "${class[@]}"
@@ -56,4 +61,8 @@ dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
 ##dconf write /org/compiz/profiles/unity/plugins/opengl/texture-filter 2
 ##dconf write /org/compiz/profiles/unity/plugins/unityshell/alt-tab-bias-viewport false
 
+if [ ! -f "$HOME/.bash_completion.d/yadm" -a "$yadm_version" = "1.08" ]; then
+    aria2c -x 8 -d $HOME/.bash_completion.d -o  yadm https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
+
+fi
 
