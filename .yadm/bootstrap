@@ -25,6 +25,10 @@ if [ ! -d "$HOME/.bash_completion.d" ]; then
     mkdir -v $HOME/.bash_completion.d
 fi
 
+if [ ! -d "$HOME/bin" ]; then
+    mkdir -v $HOME/bin
+fi
+
 ##echo "${!class[@]}"
 ##echo "${class[@]}"
 for mac in $(ip addr show | grep ether | awk '{print $2}')
@@ -71,3 +75,8 @@ if [ ! -f "$HOME/.bash_completion.d/vboxmanage" ]; then
     aria2c -x 8 -d $HOME/.bash_completion.d -o vboxmanage \
           https://raw.githubusercontent.com/tfmalt/bash-completion-virtualbox/master/vboxmanage_completion.bash
 fi
+
+# AppImages
+aria2c -x 8 -d $HOME/bin https://freeter.io/download/Freeter.AppImage
+chmod +x $HOME/bin/Freeter.AppImage
+

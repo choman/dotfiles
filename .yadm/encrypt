@@ -1,2 +1,3 @@
 .ssh/*fig
 .task/freecinc*.pem 
+.config/freeter/freeter/license.json
