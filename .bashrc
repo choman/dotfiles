@@ -165,5 +165,10 @@ export PATH="$PATH:$GOPATH/bin"
 source ~/.local/bin/bashmarks.sh
 source ~/bashmarks/bashmarks.sh
 
+for i in $(ls /home/choman/.bash_completion.d)
+do
+    source /home/choman/.bash_completion.d/$i
+done
+
 ##chmod +x ~/.vocab
 ##~/.vocab

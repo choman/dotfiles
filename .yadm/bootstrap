@@ -3,6 +3,8 @@
 grep -q "^flags.*\ hypervisor\ " /proc/cpuinfo
 AMIVM=$?
 
+yadm_version=$(yadm version | awk '{print $2}')
+
 # Go home
 cd "$HOME" || echo "can't go to: $HOME"
 
@@ -19,6 +21,13 @@ yadm remote set-url origin https://choman@github.com/choman/dotfiles
 yadm submodule update --init --remote
 (cd bashmarks; make install)
 
+if [ ! -d "$HOME/.bash_completion.d" ]; then
+    mkdir -v $HOME/.bash_completion.d
+fi
+
+if [ ! -d "$HOME/bin" ]; then
+    mkdir -v $HOME/bin
+fi
 
 ##echo "${!class[@]}"
 ##echo "${class[@]}"
@@ -39,13 +48,13 @@ gsettings set com.canonical.Unity integrated-menus true
 
 
 # dconf watch /
-dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
 dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/hsize 2
 dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
+dconf write /com/canonical/indicator/keyboard/visible false
 
 # really not a vm then do stuff on physical system
 if [ $AMIVM -ne 0 ]; then
-    dconf write /com/canonical/indicator/keyboard/visible false
+   dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
 fi
 
 dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
@@ -56,4 +65,18 @@ dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
 ##dconf write /org/compiz/profiles/unity/plugins/opengl/texture-filter 2
 ##dconf write /org/compiz/profiles/unity/plugins/unityshell/alt-tab-bias-viewport false
 
+if [ ! -f "$HOME/.bash_completion.d/yadm" -a "$yadm_version" = "1.08" ]; then
+    aria2c -x 8 -d $HOME/.bash_completion.d -o  yadm \
+          https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
+
+fi
+
+if [ ! -f "$HOME/.bash_completion.d/vboxmanage" ]; then
+    aria2c -x 8 -d $HOME/.bash_completion.d -o vboxmanage \
+          https://raw.githubusercontent.com/tfmalt/bash-completion-virtualbox/master/vboxmanage_completion.bash
+fi
+
+# AppImages
+aria2c -x 8 -d $HOME/bin https://freeter.io/download/Freeter.AppImage
+chmod +x $HOME/bin/Freeter.AppImage
 
