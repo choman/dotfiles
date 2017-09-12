@@ -54,6 +54,14 @@ if [ ! -f "$HOME/.bash_completion.d/yadm" -a "$yadm_version" = "1.08" ]; then
 fi
 
 if [ $CLASS = "dcw" ]; then
+   cd /tmp
+   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   sudo yum localinstall -y /tmp/epel-release-latest-7.noarch.rpm
+
+   sudo yum install -y tmux meld
+
+
+
    exit
 fi
 
