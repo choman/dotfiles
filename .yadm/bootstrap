@@ -73,6 +73,10 @@ gsettings set com.canonical.indicator.datetime show-date true
 gsettings set com.canonical.Unity integrated-menus true
 
 
+# gnome 17.10
+gsettings set org.gnome.desktop.interface clock-show-date true
+
+
 # dconf watch /
 dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/hsize 2
 dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
