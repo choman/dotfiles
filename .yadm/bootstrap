@@ -39,6 +39,32 @@ do
     fi
 done
 
+CLASS=$(yadm config local.class)
+
+if [ ! -f "$HOME/.bash_completion.d/yadm" -a "$yadm_version" = "1.08" ]; then
+    if [ $CLASS = "dcw" ]; then
+        wget -d $HOME/.bash_completion.d -o  yadm \
+              https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
+     
+    else
+        aria2c -x 8 -d $HOME/.bash_completion.d -o  yadm \
+              https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
+
+    fi
+fi
+
+curl https://www.teleconsole.com/get.sh | sudo sh
+
+
+if [ $CLASS = "dcw" ]; then
+   cd /tmp
+   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   sudo yum localinstall -y /tmp/epel-release-latest-7.noarch.rpm
+
+   sudo yum install -y tmux meld
+
+   exit
+fi
 
 # gsettings list-recursively
 # update some more system settings
@@ -69,11 +95,6 @@ dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
 ##dconf write /org/compiz/profiles/unity/plugins/opengl/texture-filter 2
 ##dconf write /org/compiz/profiles/unity/plugins/unityshell/alt-tab-bias-viewport false
 
-if [ ! -f "$HOME/.bash_completion.d/yadm" -a "$yadm_version" = "1.08" ]; then
-    aria2c -x 8 -d $HOME/.bash_completion.d -o  yadm \
-          https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
-
-fi
 
 if [ ! -f "$HOME/.bash_completion.d/vboxmanage" ]; then
     aria2c -x 8 -d $HOME/.bash_completion.d -o vboxmanage \
