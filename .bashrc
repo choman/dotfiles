@@ -165,6 +165,11 @@ export PATH="$PATH:$GOPATH/bin"
 source ~/.local/bin/bashmarks.sh
 source ~/bashmarks/bashmarks.sh
 
+if [ $TILIX_ID  ] || [ $VTE_VERSION  ]; then
+    source /etc/profile.d/vte.sh
+fi
+
+
 for i in $(ls /home/choman/.bash_completion.d)
 do
     source /home/choman/.bash_completion.d/$i
@@ -172,3 +177,6 @@ done
 
 ##chmod +x ~/.vocab
 ##~/.vocab
+
+# Hook for desk activation
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
