@@ -15,6 +15,18 @@ custom-commands:
           {{jira}} list --template table --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
       fi
 
+  - name: smine
+    help: display issues assigned to me
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --query "resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}}  --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
+      fi
+
+
   - name: sprint
     help: display issues for active sprint
     script: |-
