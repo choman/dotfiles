@@ -16,11 +16,22 @@ custom-commands:
       fi
 
   - name: smine
-    help: display issues assigned to me
+    help: display issues assigned to me (short)
     script: |-
       if [ -n "$JIRA_PROJECT" ]; then
           # if `project: ...` configured just list the issues for current project
           {{jira}} list --query "resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}}  --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
+      fi
+
+  - name: smine_sprint
+    help: display issues assigned to me in current Sprint (short)
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --query "sprint in openSprints() and type != epic and resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
       else
           # otherwise list issues for all project
           {{jira}}  --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
