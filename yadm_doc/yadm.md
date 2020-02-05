@@ -14,8 +14,10 @@ yadm is like having a version of Git, that only operates on your dotfiles. If yo
 - You don’t have to move your dotfiles, or have them symlinked from another location.
 - yadm automatically inherits all of Git’s features, allowing you to branch, merge, rebase, use submodules, etc.
 
-## Quick Note
-The purpose of this article is not to teach you git.  The good news is using yadm will teach you git.  And more importantly, if you already know git, congratulations.  You already know yadm
+### Quick Note
+The purpose of this article is not to teach you git.  The good news is using yadm will teach you git.  And more importantly, if you already know git, congratulations.  You already know yadm.
+
+That's because was is a bash wrapper around git.  So nearly all the git commands work with yadm. However there are other subcommands that do not work with git.  Just a heads up.
 
 ## Installing yadm
 First off we need to install yadm.  My recommendation is that you fork the main yadm repo which is located at: https://github.com/TheLocehiliosan/yadm.  Technically you don't have to, but I think there are a couple of good reasons to do so.  The choice is yours.  My main reason is that I feel choman is far easier to type then TheLocehiliosan.
@@ -186,10 +188,11 @@ In it's simpliest form, yadm bootstrap is a script.  Specifically located at $HO
 ```
 #!/bin/bash
 
-dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
+dconf write \
+     /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
 
 ```
 ## Conclusion
+YADM has drastically changed my life in how I approach my environment.  There are plenty of dotfile manage tools that you can leverage for the same task.  But I feel YADM stands out as not only one of the simplest, but also the most complete.  It's under active development, and constantly comes out with new features.
 
-
-## References
+###### References
