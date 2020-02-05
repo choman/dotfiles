@@ -150,7 +150,7 @@ transfer() {
    # as last entry source the gitprompt script
    # GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
    # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
-   GIT_PROMPT_THEME=Single_line_Ubuntu
+   #GIT_PROMPT_THEME=Single_line_Ubuntu
    source ~/bash-git-prompt/gitprompt.sh
 
 export GOROOT=$HOME/go
@@ -185,3 +185,11 @@ done
 
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+
+eval "$(direnv hook bash)"
+
+#
+#  NODE VERSION MANAGER
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
