@@ -1,16 +1,22 @@
 [user]
-	email = choman@gmail.com
-	name = Chad Homan
+        email = choman@gmail.com
+        name = Chad Homan
 [core]
-	editor = vim
+        editor = vim
 [push]
-	default = simple
+        default = simple
 [credential]
-	helper = cache
+        helper = cache
 
 [grep]
-	lineNumber = true
+        lineNumber = true
 
 # Allow local customizations in the .gitconfig_local file
 [include]
-	path = ~/.gitconfig_local
+        path = ~/.gitconfig_local
+
+[alias]
+    lg = log --topo-order --all --graph --date=local --pretty=format:'%C(green)%h%C(reset) %><(55,trunc)%s%C(red)%d%C(reset) %C(blue)[%an]%C(reset) %C(yellow)%ad%C(reset)%n'
+    lg2 = log --topo-order --all --date=local --pretty=format:'%Cgreen%h%Creset %Cblue%[%an]%Creset %Cgreen[%ad]%Creset %Cred %<(35,trunk)%D %Creset %<(40,trunk)%s %n'
+
+
