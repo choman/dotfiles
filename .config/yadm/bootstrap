@@ -1,0 +1,107 @@
+#!/bin/bash
+
+grep -q "^flags.*\ hypervisor\ " /proc/cpuinfo
+AMIVM=$?
+
+yadm_version=$(yadm version | awk '{print $2}')
+
+# Go home
+cd "$HOME" || echo "can't go to: $HOME"
+
+# setup classes
+declare -A class
+
+class["70:85:c2:06:09:a6"]="vboxvdi"
+class["08:00:27:17:b9:94"]="funstuff"
+
+# update yadm remote
+yadm remote set-url origin https://choman@github.com/choman/dotfiles
+
+# Install/Update yadm submodules
+yadm submodule update --init --remote
+(cd bashmarks; make install)
+
+if [ ! -d "$HOME/.bash_completion.d" ]; then
+    mkdir -v $HOME/.bash_completion.d
+fi
+
+if [ ! -d "$HOME/bin" ]; then
+    mkdir -v $HOME/bin
+fi
+
+##echo "${!class[@]}"
+##echo "${class[@]}"
+for mac in $(ip addr show | grep ether | awk '{print $2}')
+do
+    if [ -n "${class[$mac]}" ]; then  
+        #echo "$mac => ${class[$mac]}"
+        yadm config local.class ${class[$mac]}
+    fi
+done
+
+CLASS=$(yadm config local.class)
+
+if [ ! -f "$HOME/.bash_completion.d/yadm" -a "$yadm_version" = "1.08" ]; then
+    if [ $CLASS = "dcw" ]; then
+        wget -d $HOME/.bash_completion.d -o  yadm \
+              https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
+     
+    else
+        aria2c -x 8 -d $HOME/.bash_completion.d -o  yadm \
+              https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
+
+    fi
+fi
+
+curl https://www.teleconsole.com/get.sh | sudo sh
+
+
+if [ $CLASS = "dcw" ]; then
+   cd /tmp
+   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   sudo yum localinstall -y /tmp/epel-release-latest-7.noarch.rpm
+
+   sudo yum install -y tmux meld
+
+   exit
+fi
+
+# gsettings list-recursively
+# update some more system settings
+gsettings set com.canonical.indicator.datetime show-day true
+gsettings set com.canonical.indicator.datetime show-date true
+gsettings set com.canonical.Unity integrated-menus true
+
+
+# gnome 17.10
+gsettings set org.gnome.desktop.interface clock-show-date true
+
+
+# dconf watch /
+dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/hsize 2
+dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
+dconf write /com/canonical/indicator/keyboard/visible false
+
+# really not a vm then do stuff on physical system
+if [ $AMIVM -ne 0 ]; then
+   dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
+fi
+
+dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
+##dconf write /com/canonical/unity/launcher/favorites ['application://org.gnome.Nautilus.desktop', 'application://firefox.desktop', 'application://libreoffice-writer.desktop', 'application://libreoffice-calc.desktop', 'application://libreoffice-impress.desktop', 'application://org.gnome.Software.desktop', 'application://ubuntu-amazon-default.desktop', 'application://unity-control-center.desktop', 'application://virtualbox.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']
+
+##dconf write /org/compiz/profiles/unity/plugins/core/vsize 1
+##dconf write /org/compiz/profiles/unity/plugins/core/hsize 5
+##dconf write /org/compiz/profiles/unity/plugins/opengl/texture-filter 2
+##dconf write /org/compiz/profiles/unity/plugins/unityshell/alt-tab-bias-viewport false
+
+
+if [ ! -f "$HOME/.bash_completion.d/vboxmanage" ]; then
+    aria2c -x 8 -d $HOME/.bash_completion.d -o vboxmanage \
+          https://raw.githubusercontent.com/tfmalt/bash-completion-virtualbox/master/vboxmanage_completion.bash
+fi
+
+# AppImages
+aria2c -x 8 -d $HOME/bin https://freeter.io/download/Freeter.AppImage
+chmod +x $HOME/bin/Freeter.AppImage
+

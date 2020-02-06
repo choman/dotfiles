@@ -1,0 +1,4 @@
+export DIR_altclient="$HOME/Downloads/altclient"
+export DIR_downloads="$HOME/Downloads"
+export DIR_iso="$HOME/Downloads/ISO"
+export DIR_vboxvdi="/opt/vboxvdi"
