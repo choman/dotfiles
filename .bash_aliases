@@ -14,6 +14,9 @@ alias vdiadmin="sudo -i -u vdiadmin"
 alias telegram="nohup $HOME/Telegram/Telegram &"
 alias wire="nohup /opt/Wire/wire &"
 
+if [ -d ~/goto ]; then
+    alias g="goto"
+fi
 
 if [ -x "$HOME/.git-open/git-open" ]; then
    alias git-open="$HOME/.git-open/git-open"
