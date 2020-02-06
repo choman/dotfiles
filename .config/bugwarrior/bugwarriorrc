@@ -6,7 +6,8 @@
 # section below determining their properties, how to query them, etc.  The name
 # is just a symbol, and doesn't have any functional importance.
 #targets = my_github, my_bitbucket, paj_bitbucket, moksha_trac, bz.redhat
-targets = dcw_project
+#@targets = dcw_project, mytrello
+targets = mytrello
 
 # If unspecified, the default taskwarrior config will be used.
 #taskrc = /path/to/.taskrc
@@ -194,3 +195,15 @@ service = gmail
 gmail.query = label:action OR label:readme
 gmail.login_name = choman@gmail.com
 
+
+[mytrello]
+service = trello
+trello.api_key = 60d7df7fbd47bb8847e14ac4bb61422e
+trello.token = e0f04f2d28cdbc672b173a3577579f7f5a4f08d800992304f8e3c0574063e96d
+trello.description = {{trellocard}}
+trello.project_template = renee.trello
+trello.include_boards = Todo
+trello.include_lists = chad list, renee list
+trello.exclude_lists = Done
+trello.only_if_assigned = chadhoman
+trello.import_labels_as_tags = true
