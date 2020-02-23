@@ -116,6 +116,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+install_starship() {
+   curl -fsSL https://starship.rs/install.sh | bash
+}
+
 transfer() { 
     if [ $# -eq 0  ]; then
         echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
@@ -193,3 +197,8 @@ eval "$(direnv hook bash)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+which starship > /dev/null
+if [ $? -eq 0 ]; then 
+  eval "$(starship init bash)"
+fi
