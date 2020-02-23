@@ -1,33 +1,149 @@
 #!/bin/bash
 
-grep -q "^flags.*\ hypervisor\ " /proc/cpuinfo
-AMIVM=$?
+AMIVM=false
+DISTRO="ubuntu"
+BASH_COMPLETION_HOME="${HOME}/.config/bash_completion.d"
+BIN_DIR="${HOME}/bin"
 
-yadm_version=$(yadm version | awk '{print $2}')
+DIRS=(
+    "$HOME/.bash_completion.d"
+    ${BASH_COMPLETION_HOME}
+    "$HOME/.config/bin"
+    "$BIN_DIR"
+  )
+
+checkvm()
+{
+    echo "Checking if I am a VM - not virt-what"
+    dmesg | grep -qi hypervisor
+    if [ $? -eq 0 ]; then
+        AMIVM=true
+    fi
+}
+
+function get_yadm_version
+{
+    yadm_version=$(yadm version | awk '{print $2}') 
+}
+
+function get_bash_version
+{
+    yadm_version=$(yadm version | awk '{print $2}')
+}
+
+function determineDownloadCommand
+{
+   declare -A DCS
+   DCS['aria2c']="-x 8"
+   DCS['wget']=""
+
+   for dc in ${!DCS[@]};
+   do
+      which $dc > /dev/null 
+      if [ $? -eq 0 ]; then
+         DOWNLOAD="$dc ${DCS[$dc]}"
+         break 
+      fi
+   done
+   
+
+}
+
+# need soething better
+function determineDistro
+{
+  if [ -f "/etc/os-release" ]
+  then
+    DISTRO=$(grep "^ID=" /etc/os-release | awk -F= '{print $2}')
+  echo $DISTRO
+  else
+    UNAME=$(uname | tr "[A-Z]" "[a-z]")
+    # If Linux, try to determine specific distribution
+    if [ "$UNAME" == "linux" ]; then
+        # If available, use LSB to identify distribution
+        if [ -f "/etc/lsb-release" -o -d "/etc/lsb-release.d" ]; then
+            export DISTRO=$(lsb_release -i | cut -d: -f2 | sed s/'^\t'// | tr "[A-Z]" "[a-z]")
+        # Otherwise, use release info file
+        else
+            export DISTRO=$(ls -d /etc/[A-Za-z]*[_-][rv]e[lr]* | grep -v "lsb" | cut -d'/' -f3 | cut -d'-' -f1 | cut -d'_' -f1)
+        fi
+    fi
+  fi
+
+   # For everything else (or if above failed), just use generic identifier
+   [ "$DISTRO" == "" ] && export DISTRO=$UNAME
+   unset UNAME
+   yadm config local.class $DISTRO
+}
+
+function setup_homedir
+{
+    for dir in ${DIRS[@]}; do
+        echo "Checking existence: ${dir}"
+        if [ ! -d "${dir}" ]; then
+            mkdir -pv ${dir}
+        fi
+    done
+}
+
+function setup_macfun
+{
+    # setup classes
+    declare -A class
+
+    class["70:85:c2:06:09:a6"]="vboxvdi"
+    class["08:00:27:17:b9:94"]="funstuff"
+}
+
+function install_yadm_completions
+{
+   
+
+   if [ $? -eq 0 ]; then
+      DC="aria2c -x 8"
+   else
+      DC="wget"
+   fi
+
+  $DOWNLOAD -d ${BASH_COMPLETION_HOME} -o  yadm \
+           https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
+}
+
+function install_vbox_completions
+{
+   ${DOWNLOAD} -d ${BASH_COMPLETION_HOME} -o vboxmanage \
+       https://raw.githubusercontent.com/tfmalt/bash-completion-virtualbox/master/vboxmanage_completion.bash
+}
+
+function install_linuxbrew
+{
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+}
+
+
+checkvm
+determineDistro
+determineDownloadCommand
+get_yadm_version
+setup_homedir
+setup_macfun
 
 # Go home
 cd "$HOME" || echo "can't go to: $HOME"
 
-# setup classes
-declare -A class
+setup_macfun
 
-class["70:85:c2:06:09:a6"]="vboxvdi"
-class["08:00:27:17:b9:94"]="funstuff"
+install_yadm_completions
+install_vbox_completions
+install_linuxbrew
 
-# update yadm remote
-yadm remote set-url origin https://choman@github.com/choman/dotfiles
+# update yadm remote, not sure why I do this
+#yadm remote set-url origin https://choman@github.com/choman/dotfiles
 
 # Install/Update yadm submodules
 yadm submodule update --init --remote
 (cd bashmarks; make install)
 
-if [ ! -d "$HOME/.bash_completion.d" ]; then
-    mkdir -v $HOME/.bash_completion.d
-fi
-
-if [ ! -d "$HOME/bin" ]; then
-    mkdir -v $HOME/bin
-fi
 
 ##echo "${!class[@]}"
 ##echo "${class[@]}"
@@ -41,20 +157,8 @@ done
 
 CLASS=$(yadm config local.class)
 
-if [ ! -f "$HOME/.bash_completion.d/yadm" -a "$yadm_version" = "1.08" ]; then
-    if [ $CLASS = "dcw" ]; then
-        wget -d $HOME/.bash_completion.d -o  yadm \
-              https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
-     
-    else
-        aria2c -x 8 -d $HOME/.bash_completion.d -o  yadm \
-              https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
-
-    fi
-fi
-
+echo "Installing teleconsole"
 curl https://www.teleconsole.com/get.sh | sudo sh
-
 
 if [ $CLASS = "dcw" ]; then
    cd /tmp
@@ -66,6 +170,7 @@ if [ $CLASS = "dcw" ]; then
    exit
 fi
 
+#config_ubuntu_desktop
 # gsettings list-recursively
 # update some more system settings
 gsettings set com.canonical.indicator.datetime show-day true
@@ -83,7 +188,7 @@ dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
 dconf write /com/canonical/indicator/keyboard/visible false
 
 # really not a vm then do stuff on physical system
-if [ $AMIVM -ne 0 ]; then
+if $AMIVM; then
    dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
 fi
 
@@ -96,12 +201,7 @@ dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
 ##dconf write /org/compiz/profiles/unity/plugins/unityshell/alt-tab-bias-viewport false
 
 
-if [ ! -f "$HOME/.bash_completion.d/vboxmanage" ]; then
-    aria2c -x 8 -d $HOME/.bash_completion.d -o vboxmanage \
-          https://raw.githubusercontent.com/tfmalt/bash-completion-virtualbox/master/vboxmanage_completion.bash
-fi
-
 # AppImages
-aria2c -x 8 -d $HOME/bin https://freeter.io/download/Freeter.AppImage
-chmod +x $HOME/bin/Freeter.AppImage
+$DOWNLOAD -d ${HOME}/bin https://freeter.io/download/Freeter.AppImage
+chmod +x ${BIN_DIR}/Freeter.AppImage
 
