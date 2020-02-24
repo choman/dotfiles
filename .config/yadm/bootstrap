@@ -149,6 +149,7 @@ yadm submodule update --init --remote
 ##echo "${class[@]}"
 for mac in $(ip addr show | grep ether | awk '{print $2}')
 do
+    echo "MAC = ${mac}"
     if [ -n "${class[$mac]}" ]; then  
         #echo "$mac => ${class[$mac]}"
         yadm config local.class ${class[$mac]}
@@ -188,7 +189,7 @@ dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
 dconf write /com/canonical/indicator/keyboard/visible false
 
 # really not a vm then do stuff on physical system
-if $AMIVM; then
+if ! $AMIVM; then
    dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
 fi
 
