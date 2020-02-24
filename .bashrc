@@ -158,7 +158,7 @@ transfer() {
    source ~/bash-git-prompt/gitprompt.sh
 
 export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOROOT/bin:$HOME/.local/bin
 export GOPATH=$HOME/go-programs
 export PATH="$PATH:$GOPATH/bin"
 
