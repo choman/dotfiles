@@ -101,8 +101,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f "${HOME}/.bash_aliases" ]; then
+    source ${HOME}/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -163,7 +163,7 @@ export GOPATH=$HOME/go-programs
 export PATH="$PATH:$GOPATH/bin"
 
 [[ -s "/home/choman/.gvm/scripts/gvm" ]] && source "/home/choman/.gvm/scripts/gvm"
-[ -r /home/choman/.byobu/prompt ] && . /home/choman/.byobu/prompt   #byobu-prompt#
+[[ -r /home/choman/.byobu/prompt ]] && . /home/choman/.byobu/prompt   #byobu-prompt#
 [[ -d "/home/choman/.dotfiles/bin" ]]  && PATH="$PATH:/home/choman/.dotfiles/bin"
 
 if [ ! -d "$HOME/goto" ]; then 
@@ -189,7 +189,6 @@ done
 
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
-
 eval "$(direnv hook bash)"
 
 #
