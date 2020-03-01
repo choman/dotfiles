@@ -165,6 +165,7 @@ export PATH="$PATH:$GOPATH/bin"
 [[ -s "/home/choman/.gvm/scripts/gvm" ]] && source "/home/choman/.gvm/scripts/gvm"
 [[ -r /home/choman/.byobu/prompt ]] && . /home/choman/.byobu/prompt   #byobu-prompt#
 [[ -d "/home/choman/.dotfiles/bin" ]]  && PATH="$PATH:/home/choman/.dotfiles/bin"
+[[ -d "/home/choman/.cargo/bin" ]]  && PATH="$PATH:/home/choman/.cargo/bin"
 
 if [ ! -d "$HOME/goto" ]; then 
     source ~/.local/bin/bashmarks.sh
@@ -210,5 +211,10 @@ fi
 ### This Should be at the EOF. https://bashhub.com/docs
 if [ -f ~/.bashhub/bashhub.sh ]; then
     source ~/.bashhub/bashhub.sh
+fi
+
+MCFLY_BASH="./.cargo/registry/src/github.com-1ecc6299db9ec823/mcfly-0.3.6/mcfly.bash"
+if [[ -r "${MCFLY_BASH}" ]]; then
+  source ${MCFLY_BASH}
 fi
 
