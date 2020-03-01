@@ -190,7 +190,10 @@ done
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
-eval "$(direnv hook bash)"
+which direnv
+if [ $? -eq 0 ]; then
+    eval "$(direnv hook bash)"
+fi
 
 #
 #  NODE VERSION MANAGER
@@ -198,7 +201,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-which starship > /dev/null
+which starship1 > /dev/null
 if [ $? -eq 0 ]; then 
   eval "$(starship init bash)"
 fi
