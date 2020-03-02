@@ -191,12 +191,12 @@ done
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
-which direnv
+which direnv > /dev/null
 if [ $? -eq 0 ]; then
     eval "$(direnv hook bash)"
 fi
 
-which aliases
+which aliases > /dev/null
 if [ $? -eq 0 ]; then
     eval "$(aliases init --global)"
 fi
