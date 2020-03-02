@@ -166,6 +166,7 @@ export PATH="$PATH:$GOPATH/bin"
 [[ -r /home/choman/.byobu/prompt ]] && . /home/choman/.byobu/prompt   #byobu-prompt#
 [[ -d "/home/choman/.dotfiles/bin" ]]  && PATH="$PATH:/home/choman/.dotfiles/bin"
 [[ -d "/home/choman/.cargo/bin" ]]  && PATH="$PATH:/home/choman/.cargo/bin"
+[[ -d "/home/choman/.local/bin" ]]  && PATH="$PATH:/home/choman/.local/bin"
 
 if [ ! -d "$HOME/goto" ]; then 
     source ~/.local/bin/bashmarks.sh
@@ -176,7 +177,9 @@ fi
 
 
 if [ $TILIX_ID  ] || [ $VTE_VERSION  ]; then
-    source /etc/profile.d/vte.sh
+    if [ -s "/etc/profile.d/vte.sh" ]; then
+        source /etc/profile.d/vte.sh
+    fi
 fi
 
 
