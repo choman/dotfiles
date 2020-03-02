@@ -164,6 +164,7 @@ export PATH="$PATH:$GOPATH/bin"
 
 [[ -s "/home/choman/.gvm/scripts/gvm" ]] && source "/home/choman/.gvm/scripts/gvm"
 [[ -r /home/choman/.byobu/prompt ]] && . /home/choman/.byobu/prompt   #byobu-prompt#
+## 
 [[ -d "/home/choman/.dotfiles/bin" ]]  && PATH="$PATH:/home/choman/.dotfiles/bin"
 [[ -d "/home/choman/.cargo/bin" ]]  && PATH="$PATH:/home/choman/.cargo/bin"
 [[ -d "/home/choman/.local/bin" ]]  && PATH="$PATH:/home/choman/.local/bin"
@@ -223,8 +224,6 @@ MCFLY_BASH="./.cargo/registry/src/github.com-1ecc6299db9ec823/mcfly-0.3.6/mcfly.
 if [[ -r "${MCFLY_BASH}" ]]; then
   source ${MCFLY_BASH}
 fi
-
-
 
 # Source goto
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
