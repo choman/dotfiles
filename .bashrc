@@ -177,9 +177,7 @@ fi
 
 
 if [ $TILIX_ID  ] || [ $VTE_VERSION  ]; then
-    if [ -s "/etc/profile.d/vte.sh" ]; then
-        source /etc/profile.d/vte.sh
-    fi
+    source /etc/profile.d/vte.sh || echo "File not found: /etc/profile.d/vte.sh"
 fi
 
 
