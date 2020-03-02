@@ -196,6 +196,11 @@ if [ $? -eq 0 ]; then
     eval "$(direnv hook bash)"
 fi
 
+which aliases
+if [ $? -eq 0 ]; then
+    eval "$(aliases init --global)"
+fi
+
 #
 #  NODE VERSION MANAGER
 export NVM_DIR="$HOME/.nvm"
