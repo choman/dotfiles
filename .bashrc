@@ -218,3 +218,8 @@ if [[ -r "${MCFLY_BASH}" ]]; then
   source ${MCFLY_BASH}
 fi
 
+
+
+# Source goto
+[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
+
