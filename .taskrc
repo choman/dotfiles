@@ -50,4 +50,5 @@ context.epe=project:clients.epe or +epe
 context.homans=project:clients.homans or +homans
 context.home=project:home or +home
 context.geek=project:geek or tags:geek or +geek
-context.appt=project:appt or tags:appt or +appt
+context.appt=project:appt or tags:work.appt or tags:appt or +appt
+context=appt
