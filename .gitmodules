@@ -10,3 +10,6 @@
 [submodule "goto"]
 	path = goto
 	url = https://github.com/iridakos/goto
+[submodule "/home/choman/.tmux/plugins/tpm"]
+	path = /home/choman/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
