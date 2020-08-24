@@ -12,6 +12,11 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+if [ -f "$HOME/.work" ]; then
+   echo "setting yadm class"
+   yadm config local.class work
+fi
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -88,9 +93,11 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+#alias ll='ls -alF'
+#alias la='ls -A'
+#alias l='ls -CF'
+alias ll='ls -lAh'
+alias llc='clear;ls -lAh'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -227,4 +234,5 @@ fi
 
 # Source goto
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
+[[ -x "/usr/local/bin/jira" ]] && eval "$(jira --completion-script-bash)"
 
