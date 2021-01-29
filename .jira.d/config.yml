@@ -1,5 +1,6 @@
 endpoint: https://jira.di2e.net
 user: chad.homan
+login: chad.homan
 project: SMS
 editor: vim
 
@@ -48,3 +49,15 @@ custom-commands:
           # otherwise list issues for all project
           echo "\"project: ...\" configuration missing from .jira.d/config.yml"
       fi
+
+  - name: closed
+    help: display issues closed to me (short)
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --query "resolution = done and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}}  --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
+      fi
+
