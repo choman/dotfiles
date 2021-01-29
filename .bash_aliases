@@ -11,8 +11,18 @@ alias telegram="nohup ~/bin/Telegram/Telegram &"
 alias freeter="nohup ~/bin/Freeter.AppImage &"
 alias turtl="nohup /opt/turtl/turtl &"
 alias vdiadmin="sudo -i -u vdiadmin"
-alias telegram="nohup $HOME/Telegram/Telegram &"
+
+if [ -f "/usr/local/bin/Telegram" ]; then
+    alias telegram="nohup /usr/local/bin/Telegram &"
+elif [ -f "$HOME/Telegram/Telegram" ]; then
+    alias telegram="nohup $HOME/Telegram/Telegram &"
+else
+    echo "no teelegram found"
+fi
+
 alias wire="nohup /opt/Wire/wire &"
+alias python="/usr/bin/python3"
+alias pip="/usr/bin/pip3"
 
 
 alias python=/usr/bin/python3
