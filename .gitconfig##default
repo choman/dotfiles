@@ -20,3 +20,5 @@
     lg2 = log --topo-order --all --date=local --pretty=format:'%Cgreen%h%Creset %Cblue%[%an]%Creset %Cgreen[%ad]%Creset %Cred %<(35,trunk)%D %Creset %<(40,trunk)%s %n'
 
 
+[pull]
+	ff = only
