@@ -228,11 +228,10 @@ if [ -f ~/.bashhub/bashhub.sh ]; then
 fi
 
 MCFLY_BASH="./.cargo/registry/src/github.com-1ecc6299db9ec823/mcfly-0.3.6/mcfly.bash"
-if [[ -r "${MCFLY_BASH}" ]]; then
-  source ${MCFLY_BASH}
-fi
+[[ -r "${MCFLY_BASH}" ]] && source ${MCFLY_BASH}
 
 # Source goto
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
 [[ -x "/usr/local/bin/jira" ]] && eval "$(jira --completion-script-bash)"
+[[ -x "/usr/local/bin/starship" ]] && eval "$(starship init bash)"
 
