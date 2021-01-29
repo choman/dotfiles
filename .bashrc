@@ -145,6 +145,7 @@ transfer() {
     rm -f $tmpfile;
 } 
 
+if [ -x "~/bash-git-prompt/gitprompt.sh" ]; then
    # Set config variables first
    GIT_PROMPT_ONLY_IN_REPO=1
 
@@ -163,6 +164,7 @@ transfer() {
    # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
    #GIT_PROMPT_THEME=Single_line_Ubuntu
    source ~/bash-git-prompt/gitprompt.sh
+fi
 
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$HOME/.local/bin
