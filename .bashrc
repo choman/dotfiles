@@ -187,7 +187,7 @@ fi
 
 
 if [ $TILIX_ID  ] || [ $VTE_VERSION  ]; then
-    source /etc/profile.d/vte.sh || echo "File not found: /etc/profile.d/vte.sh"
+    [[ -f  /etc/profile.d/vte.sh ]] && source /etc/profile.d/vte.sh || echo "File not found: /etc/profile.d/vte.sh"
 fi
 
 
@@ -236,4 +236,5 @@ MCFLY_BASH="./.cargo/registry/src/github.com-1ecc6299db9ec823/mcfly-0.3.6/mcfly.
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
 [[ -x "/usr/local/bin/jira" ]] && eval "$(jira --completion-script-bash)"
 [[ -x "/usr/local/bin/starship" ]] && eval "$(starship init bash)"
+[[ -x "/usr/local/bin/gopass" ]] && eval "$(gopass completion bash)"
 
