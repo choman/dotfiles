@@ -37,10 +37,12 @@ data.location=~/.task
 
 taskd.certificate=/home/choman/.task/private.certificate.pem
 taskd.key=/home/choman/.task/private.key.pem
-taskd.ca=/home/choman/.task/ca.cert.pem
+#taskd.ca=/home/choman/.task/ca.cert.pem
+taskd.ca=/home/choman/.task/caci-ca.pem
 taskd.server=taskwarrior.inthe.am:53589
 taskd.credentials=inthe_am/choman/d0beb820-8425-44d7-9835-c011ffeaf350
 taskd.trust=ignore hostname
+#taskd.trust=allow all
 regex=on
 editor=vim
 
@@ -51,4 +53,3 @@ context.homans=project:clients.homans or +homans
 context.home=project:home or +home
 context.geek=project:geek or tags:geek or +geek
 context.appt=project:appt or tags:work.appt or tags:appt or +appt
-context=appt
