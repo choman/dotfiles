@@ -1,3 +1,4 @@
 downloads /home/choman/Downloads
 pcloud /home/choman/pCloudDrive
 dcw_baseline /home/choman/baseline/dcw_puppet
+baseimages /iso/files/docker_images/baseimages_rhel
