@@ -1,0 +1,19 @@
+show-tags: true
+show-fundamentals: true
+show-separator: true
+interval: 10
+watchlist:
+  - NET
+  - TEAM
+  - ESTC
+  - BTC-USD
+lots:
+  - symbol: "ABNB"
+    quantity: 35.0
+    unit_cost: 146.00
+  - symbol: "ARKW"
+    quantity: 20.0
+    unit_cost: 152.25
+  - symbol: "ARKW"
+    quantity: 20.0
+    unit_cost: 145.35
