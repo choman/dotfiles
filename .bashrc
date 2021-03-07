@@ -127,6 +127,10 @@ install_starship() {
    curl -fsSL https://starship.rs/install.sh | bash
 }
 
+install_croc() {
+   curl https://getcroc.schollz.com | bash
+}
+
 transfer() { 
     if [ $# -eq 0  ]; then
         echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
