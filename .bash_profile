@@ -5,3 +5,5 @@
 export  PATH=/home/choman/.rvm/gems/ruby-2.2.1/bin:/home/choman/.rvm/gems/ruby-2.2.1@global/bin:/home/choman/.rvm/rubies/ruby-2.2.1/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/choman/.rvm/bin:/home/choman/.rvm/bin:/home/choman/packer:~/packer
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+[ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
