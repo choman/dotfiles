@@ -5,9 +5,6 @@
 	editor = vim
 [push]
 	default = simple
-[credential]
-	helper = cache
-
 [grep]
 	lineNumber = true
 
