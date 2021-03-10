@@ -241,8 +241,11 @@ MCFLY_BASH="./.cargo/registry/src/github.com-1ecc6299db9ec823/mcfly-0.3.6/mcfly.
 [[ -x "/usr/local/bin/jira" ]] && eval "$(jira --completion-script-bash)"
 [[ -x "/usr/local/bin/starship" ]] && eval "$(starship init bash)"
 [[ -x "/usr/local/bin/gopass" ]] && eval "$(gopass completion bash)"
+[[ -x "/usr/local/bin/zoxide" ]] && eval "$(zoxide init bash)"
 
 
 # >>>> Vagrant command completion (start)
 . /opt/vagrant/embedded/gems/2.2.14/gems/vagrant-2.2.14/contrib/bash/completion.sh
 # <<<<  Vagrant command completion (end)
+
+[ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
