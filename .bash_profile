@@ -7,3 +7,5 @@ export  PATH=/home/choman/.rvm/gems/ruby-2.2.1/bin:/home/choman/.rvm/gems/ruby-2
 export PATH="$HOME/.cargo/bin:$PATH"
 
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
+
+export PATH="$HOME/.poetry/bin:$PATH"
