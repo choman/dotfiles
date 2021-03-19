@@ -124,11 +124,16 @@ if ! shopt -oq posix; then
 fi
 
 install_starship() {
-   curl -fsSL https://starship.rs/install.sh | bash
+  curl -fsSL https://starship.rs/install.sh | bash
 }
 
 install_croc() {
-   curl https://getcroc.schollz.com | bash
+  curl https://getcroc.schollz.com | bash
+}
+
+install_poetry() {
+  poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
+  curl -sSL ${poetry_url} | python -
 }
 
 transfer() { 
@@ -242,6 +247,7 @@ MCFLY_BASH="./.cargo/registry/src/github.com-1ecc6299db9ec823/mcfly-0.3.6/mcfly.
 [[ -x "/usr/local/bin/starship" ]] && eval "$(starship init bash)"
 [[ -x "/usr/local/bin/gopass" ]] && eval "$(gopass completion bash)"
 [[ -x "/usr/local/bin/zoxide" ]] && eval "$(zoxide init bash)"
+[[ -r "${HOME}/.poetry/env" ]] && source $HOME/.poetry/env
 
 
 # >>>> Vagrant command completion (start)
