@@ -14,8 +14,8 @@ alias vdiadmin="sudo -i -u vdiadmin"
 alias telegram="nohup $HOME/Telegram/Telegram &"
 alias wire="nohup /opt/Wire/wire &"
 
-alias python=/usr/bin/python3
-alias pip=/usr/bin/pip3
+##alias python=/usr/bin/python3
+##alias pip=/usr/bin/pip3
 
 if [ -d ~/goto ]; then
     alias g="goto"
