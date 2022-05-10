@@ -12,7 +12,7 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-if [ -f "$HOME/.work" ]; then
+if [[ -f "$HOME/.work" ]]; then
    echo "setting yadm class"
    yadm config local.class work
 fi
@@ -96,8 +96,11 @@ fi
 #alias ll='ls -alF'
 #alias la='ls -A'
 #alias l='ls -CF'
-alias ll='ls -lAh'
+alias la='ls -A'
 alias llc='clear;ls -lAh'
+alias ll='ls -alF'
+alias ll='ls -lAh'
+alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -108,9 +111,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f "${HOME}/.bash_aliases" ]; then
-    source ${HOME}/.bash_aliases
-fi
+[[ -f "~/.bash_aliases" ]] && source ~/.bash_aliases
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -124,7 +125,7 @@ if ! shopt -oq posix; then
 fi
 
 install_starship() {
-  curl -fsSL https://starship.rs/install.sh | bash
+    curl -sS https://starship.rs/install.sh | sh
 }
 
 install_croc() {
@@ -211,26 +212,11 @@ done
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
-which direnv > /dev/null
-if [ $? -eq 0 ]; then
-    eval "$(direnv hook bash)"
-fi
-
-which aliases > /dev/null
-if [ $? -eq 0 ]; then
-    eval "$(aliases init --global)"
-fi
-
 #
 #  NODE VERSION MANAGER
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-which starship > /dev/null
-if [ $? -eq 0 ]; then 
-  eval "$(starship init bash)"
-fi
 
 ### Bashhub.com Installation.
 ### This Should be at the EOF. https://bashhub.com/docs
@@ -238,20 +224,33 @@ if [ -f ~/.bashhub/bashhub.sh ]; then
     source ~/.bashhub/bashhub.sh
 fi
 
-MCFLY_BASH="./.cargo/registry/src/github.com-1ecc6299db9ec823/mcfly-0.3.6/mcfly.bash"
-[[ -r "${MCFLY_BASH}" ]] && source ${MCFLY_BASH}
-
-# Source goto
-[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
-[[ -x "/usr/local/bin/jira" ]] && eval "$(jira --completion-script-bash)"
-[[ -x "/usr/local/bin/starship" ]] && eval "$(starship init bash)"
-[[ -x "/usr/local/bin/gopass" ]] && eval "$(gopass completion bash)"
-[[ -x "/usr/local/bin/zoxide" ]] && eval "$(zoxide init bash)"
-[[ -r "${HOME}/.poetry/env" ]] && source $HOME/.poetry/env
+##MCFLY_BASH="./.cargo/registry/src/github.com-1ecc6299db9ec823/mcfly-0.3.6/mcfly.bash"
+##[[ -r "${MCFLY_BASH}" ]] && source ${MCFLY_BASH}
 
 
-# >>>> Vagrant command completion (start)
-. /opt/vagrant/embedded/gems/2.2.14/gems/vagrant-2.2.14/contrib/bash/completion.sh
-# <<<<  Vagrant command completion (end)
+VAGRANT_VERSION=
+if [[ -x "$(which vagrant)" ]]; then
+    VAGRANT_VERSION=$(vagrant --version| awk '{print $2}')
+    VAGRANT_BASE="/opt/vagrant/embedded/gems/${VAGRANT_VERSION}"
+
+    if [[ -d "${VAGRANT_VASE}" ]]; then 
+        # >>>> Vagrant command completion (start)
+        . ${VAGRANT_BASE}/gems/vagrant-${VAGRANT_VERSION}/contrib/bash/completion.sh
+        # <<<<  Vagrant command completion (end)
+    fi
+fi
 
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
+
+# awesome command shell hooks
+[[ -r "${HOME}/.poetry/env" ]] && source $HOME/.poetry/env
+[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
+[[ -x "$(which direnv)" ]] && eval "$(direnv hook bash)"
+[[ -x "$(which aliases)" ]] && eval "$(aliases init --global)"
+[[ -x "$(which zoxide)" ]] && eval "$(zoxide init bash)"
+
+# Source awesome command completions
+[[ -x "$(which gopass)" ]] && eval "$(gopass completion bash)"
+[[ -x "$(which jira)" ]] && eval "$(jira --completion-script-bash)"
+[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
+[[ -x "$(which starship)" ]] && eval "$(starship init bash)"
