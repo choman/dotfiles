@@ -195,6 +195,8 @@ else
     source ~/goto/goto.sh
 fi
 
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 if [ $TILIX_ID  ] || [ $VTE_VERSION  ]; then
     [[ -f  /etc/profile.d/vte.sh ]] && source /etc/profile.d/vte.sh || echo "File not found: /etc/profile.d/vte.sh"
@@ -242,6 +244,15 @@ fi
 
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
+## Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if [[ -x $(which pyenv) ]]; then
+   eval "$(pyenv init --path)"
+   #eval "$(pyenv virtualenv-init -)"
+fi
+
+
 # awesome command shell hooks
 [[ -r "${HOME}/.poetry/env" ]] && source $HOME/.poetry/env
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
@@ -252,5 +263,8 @@ fi
 # Source awesome command completions
 [[ -x "$(which gopass)" ]] && eval "$(gopass completion bash)"
 [[ -x "$(which jira)" ]] && eval "$(jira --completion-script-bash)"
-[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
+#[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
+#[[ -x "$(which pipenv)" ]] && eval "$(pipenv --completions)"
 [[ -x "$(which starship)" ]] && eval "$(starship init bash)"
+[[ -f "~repos/yadm/yadm/completion/bash/yadm" ]] && source ~/repos/yadm/yadm/completion/bash/yadm
+
