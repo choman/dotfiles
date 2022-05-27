@@ -1,0 +1,8 @@
+#!/bin/bash
+
+install_gopass() {
+   echo "Installing/Updating gopass"
+}
+
+echo "Setting up gopass completions"
+[[ -x "$(which gopass)" ]] && eval "$(gopass completion bash)"
