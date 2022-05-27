@@ -26,8 +26,8 @@ if [ -x "$HOME/.git-open/git-open" ]; then
 fi
 
 if [[ "${HOSTNAME}" == "zbook01" ]]; then
-   alias s3_ls="echo 'listing 235463468278-public-keys'; aws s3 ls 235463468278-public-keys"
-   alias s3_cp_leys="aws s3 cp  ~/.ssh/vi2e_chadhoman_ed25519.pub s3://235463468278-public-keys/chadhoman.pub"
+   alias vi2e_s3_ls="echo 'listing 235463468278-public-keys'; aws s3 ls 235463468278-public-keys"
+   alias vi2e_s3_cp_leys="aws s3 cp  ~/.ssh/vi2e_chadhoman_ed25519.pub s3://235463468278-public-keys/chadhoman.pub"
 fi
 
 alias wtoday="curl http://wttr.in"
