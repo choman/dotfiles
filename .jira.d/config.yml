@@ -1,50 +1,46 @@
-endpoint: https://jira.di2e.net
-user: chad.homan
-project: SMS
-editor: vim
+#!/usr/bin/python3
+#
+import yaml
+import os
 
-custom-commands:
-  - name: mine
-    help: display issues assigned to me
-    script: |-
-      if [ -n "$JIRA_PROJECT" ]; then
-          # if `project: ...` configured just list the issues for current project
-          {{jira}} list --template table --query "resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
-      else
-          # otherwise list issues for all project
-          {{jira}} list --template table --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
-      fi
+PATH = os.getcwd()
+PATH = "/home/choman/.jira.d"
 
-  - name: smine
-    help: display issues assigned to me (short)
-    script: |-
-      if [ -n "$JIRA_PROJECT" ]; then
-          # if `project: ...` configured just list the issues for current project
-          {{jira}} list --query "resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
-      else
-          # otherwise list issues for all project
-          {{jira}}  --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
-      fi
+JIRA = "https://jira.di2e.net"
+USERNAME = "chad.homan"
+PROJECT = "OADCGS"
+PROJECT_SHORT = "di2e"
 
-  - name: smine_sprint
-    help: display issues assigned to me in current Sprint (short)
-    script: |-
-      if [ -n "$JIRA_PROJECT" ]; then
-          # if `project: ...` configured just list the issues for current project
-          {{jira}} list --query "sprint in openSprints() and type != epic and resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
-      else
-          # otherwise list issues for all project
-          {{jira}}  --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
-      fi
+CONFIG = {}
+
+def read_yaml(CONFIG_YAML):
+  with open(CONFIG_YAML) as fp:
+    data = yaml.safe_load(fp)
+
+  return data
 
 
-  - name: sprint
-    help: display issues for active sprint
-    script: |-
-      if [ -n "$JIRA_PROJECT" ]; then
-          # if `project: ...` configured just list the issues for current project
-          {{jira}} list --template table --query "sprint in openSprints() and type != epic and resolution = unresolved and project=$JIRA_PROJECT ORDER BY rank asc, created"
-      else
-          # otherwise list issues for all project
-          echo "\"project: ...\" configuration missing from .jira.d/config.yml"
-      fi
+data = read_yaml(os.path.join(PATH, "custum-commands.yml"))
+
+
+CONFIG.setdefault("endpoint", JIRA)
+CONFIG.setdefault("user", USERNAME)
+CONFIG.setdefault("project", PROJECT)
+CONFIG.setdefault("editor", "vim")
+CONFIG.setdefault("password-source", "gopass")
+CONFIG.setdefault("password-name", f"{PROJECT_SHORT}/{USERNAME}")
+
+CONFIG.update(data)
+
+
+dump = yaml.dump(CONFIG, default_flow_style = False, allow_unicode = True, encoding = None)
+print (dump)
+
+##def main():
+##  #getgroup()
+##  get_yaml()
+
+
+
+##if __name__ == "__main__":
+##    main()
