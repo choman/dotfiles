@@ -1,0 +1,7 @@
+#!/bin/bash
+
+install_jira() {
+   echo "Install/Update gojira"
+}
+
+[[ -x "$(which jira)" ]] && eval "$(jira --completion-script-bash)"
