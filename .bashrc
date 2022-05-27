@@ -124,57 +124,58 @@ if ! shopt -oq posix; then
   fi
 fi
 
-install_starship() {
-    curl -sS https://starship.rs/install.sh | sh
-}
+###install_starship() {
+###    curl -sS https://starship.rs/install.sh | sh
+###}
 
-install_croc() {
-  curl https://getcroc.schollz.com | bash
-}
+###install_croc() {
+###  curl https://getcroc.schollz.com | bash
+###}
 
 install_poetry() {
   poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
   curl -sSL ${poetry_url} | python -
 }
 
-transfer() { 
-    if [ $# -eq 0  ]; then
-        echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
-        return 1;
-    fi
+###transfer() { 
+###    if [ $# -eq 0  ]; then
+###        echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
+###        return 1;
+###    fi
+###
+###
+###    tmpfile=$( mktemp -t transferXXX  );
+###
+###    if tty -s; then
+###        basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
+######        curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
+###    else
+###        curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ;
+###    fi;
+###    cat $tmpfile;
+###    rm -f $tmpfile;
+###} 
 
-    tmpfile=$( mktemp -t transferXXX  );
-
-    if tty -s; then
-        basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
-        curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
-    else
-        curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ;
-    fi;
-    cat $tmpfile;
-    rm -f $tmpfile;
-} 
-
-if [ -x "~/bash-git-prompt/gitprompt.sh" ]; then
-   # Set config variables first
-   GIT_PROMPT_ONLY_IN_REPO=1
-
-   # GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
-
-   # GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
-   # GIT_PROMPT_SHOW_UNTRACKED_FILES=all # can be no, normal or all; determines counting of untracked files
-
-   # GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
-
-   # GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
-   # GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
-
-   # as last entry source the gitprompt script
-   # GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
-   # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
-   #GIT_PROMPT_THEME=Single_line_Ubuntu
-   source ~/bash-git-prompt/gitprompt.sh
-fi
+###if [ -x "~/bash-git-prompt/gitprompt.sh" ]; then
+###   # Set config variables first
+###   GIT_PROMPT_ONLY_IN_REPO=1
+###
+###   # GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+###
+###   # GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
+###   # GIT_PROMPT_SHOW_UNTRACKED_FILES=all # can be no, normal or all; determines counting of untracked files
+###
+###   # GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
+###
+###   # GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
+###   # GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+###
+###   # as last entry source the gitprompt script
+###   # GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
+###   # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
+###   #GIT_PROMPT_THEME=Single_line_Ubuntu
+###   source ~/bash-git-prompt/gitprompt.sh
+###fi
 
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$HOME/.local/bin
@@ -203,10 +204,6 @@ if [ $TILIX_ID  ] || [ $VTE_VERSION  ]; then
 fi
 
 
-for i in $(ls /home/choman/.bash_completion.d)
-do
-    source /home/choman/.bash_completion.d/$i
-done
 
 ##chmod +x ~/.vocab
 ##~/.vocab
@@ -246,8 +243,9 @@ fi
 
 ## Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if [[ -x $(which pyenv) ]]; then
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+if [[ -x "$(which pyenv)" ]]; then
+   echo "Settting up pyenv"
    eval "$(pyenv init --path)"
    #eval "$(pyenv virtualenv-init -)"
 fi
@@ -261,10 +259,32 @@ fi
 [[ -x "$(which zoxide)" ]] && eval "$(zoxide init bash)"
 
 # Source awesome command completions
-[[ -x "$(which gopass)" ]] && eval "$(gopass completion bash)"
-[[ -x "$(which jira)" ]] && eval "$(jira --completion-script-bash)"
+###[[ -x "$(which gopass)" ]] && eval "$(gopass completion bash)"
+###[[ -x "$(which jira)" ]] && eval "$(jira --completion-script-bash)"
 #[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
 #[[ -x "$(which pipenv)" ]] && eval "$(pipenv --completions)"
-[[ -x "$(which starship)" ]] && eval "$(starship init bash)"
+###[[ -x "$(which starship)" ]] && eval "$(starship init bash)"
 [[ -f "~repos/yadm/yadm/completion/bash/yadm" ]] && source ~/repos/yadm/yadm/completion/bash/yadm
 
+# This churns through files in $HOME/.bashrc.d if they are executable.
+BASHRCD="${HOME}/.bashrc.d"
+if [[ -d "${BASHRCD}" ]]; then
+   echo "sourcing: ${BASHRCD}"
+   for file in ${BASHRCD}/* ; do
+      if [[ "${file##*/}" != "bashrc.init" ]]; then
+         test -f "$file" || continue
+         test -x "$file" || continue
+	 echo " - ${file}"
+         . "$file"
+      fi
+   done
+fi
+
+BASH_COMPLETIONS="${HOME}/.bash_completion.d"
+if [[ -d "${BASH_COMPLETIONS}" ]]; then
+   for file in $(ls ${BASH_COMPLETIONS})
+   do 
+       echo " - Sourcing ${file}"
+       source /home/choman/.bash_completion.d/$file
+   done
+fi
