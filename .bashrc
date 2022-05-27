@@ -264,7 +264,7 @@ fi
 #[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
 #[[ -x "$(which pipenv)" ]] && eval "$(pipenv --completions)"
 ###[[ -x "$(which starship)" ]] && eval "$(starship init bash)"
-[[ -f "~repos/yadm/yadm/completion/bash/yadm" ]] && source ~/repos/yadm/yadm/completion/bash/yadm
+##[[ -f "~repos/yadm/yadm/completion/bash/yadm" ]] && source ~/repos/yadm/yadm/completion/bash/yadm
 
 # This churns through files in $HOME/.bashrc.d if they are executable.
 BASHRCD="${HOME}/.bashrc.d"
