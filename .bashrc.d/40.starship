@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source functions
+
+install_starship() {
+    curl -sS https://starship.rs/install.sh | sh
+}
+
+[[ -x "$(which starship)" ]] && eval "$(starship init bash)"
