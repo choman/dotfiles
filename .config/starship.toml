@@ -6,7 +6,7 @@ full_symbol = "🔋"
 charging_symbol = "🔌"
 discharging_symbol = "⚡"
 
-[[batter.display]]
+[[battery.display]]
 threshold = 30
 style = "bold red"
 
