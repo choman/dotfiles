@@ -1,0 +1,14 @@
+
+install() {
+   case "$1" 
+      starship)
+         install_starship
+         ;;
+      *)
+          echo "Unknown installer"
+          ;;
+   esac
+}
+
+
+echo "successfully sourced"
