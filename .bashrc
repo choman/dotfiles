@@ -18,6 +18,11 @@ if [[ -f "$HOME/.work" ]]; then
 fi
 
 # append to the history file, don't overwrite it
+shopt -s cdspell # correct dir spellings
+shopt -q -s cmdhist #make multi-line commands line in history
+shopt -s checkwinsize # make sure display is updated when terminal is resized
+shopt -s cmdhist
+shopt -s histappend histreedit histverify
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
@@ -26,7 +31,7 @@ HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+##shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -77,17 +82,17 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+#### enable color support of ls and also add handy aliases
+###if [ -x /usr/bin/dircolors ]; then
+###    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+###    alias ls='ls --color=auto'
+###    #alias dir='dir --color=auto'
+###    #alias vdir='vdir --color=auto'
+###
+###    alias grep='grep --color=auto'
+###    alias fgrep='fgrep --color=auto'
+###    alias egrep='egrep --color=auto'
+###fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -124,58 +129,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-###install_starship() {
-###    curl -sS https://starship.rs/install.sh | sh
-###}
-
-###install_croc() {
-###  curl https://getcroc.schollz.com | bash
-###}
-
 install_poetry() {
   poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
   curl -sSL ${poetry_url} | python -
 }
-
-###transfer() { 
-###    if [ $# -eq 0  ]; then
-###        echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
-###        return 1;
-###    fi
-###
-###
-###    tmpfile=$( mktemp -t transferXXX  );
-###
-###    if tty -s; then
-###        basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
-######        curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
-###    else
-###        curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ;
-###    fi;
-###    cat $tmpfile;
-###    rm -f $tmpfile;
-###} 
-
-###if [ -x "~/bash-git-prompt/gitprompt.sh" ]; then
-###   # Set config variables first
-###   GIT_PROMPT_ONLY_IN_REPO=1
-###
-###   # GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
-###
-###   # GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
-###   # GIT_PROMPT_SHOW_UNTRACKED_FILES=all # can be no, normal or all; determines counting of untracked files
-###
-###   # GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
-###
-###   # GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
-###   # GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
-###
-###   # as last entry source the gitprompt script
-###   # GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
-###   # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
-###   #GIT_PROMPT_THEME=Single_line_Ubuntu
-###   source ~/bash-git-prompt/gitprompt.sh
-###fi
 
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$HOME/.local/bin
@@ -259,12 +216,8 @@ fi
 [[ -x "$(which zoxide)" ]] && eval "$(zoxide init bash)"
 
 # Source awesome command completions
-###[[ -x "$(which gopass)" ]] && eval "$(gopass completion bash)"
-###[[ -x "$(which jira)" ]] && eval "$(jira --completion-script-bash)"
 #[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
 #[[ -x "$(which pipenv)" ]] && eval "$(pipenv --completions)"
-###[[ -x "$(which starship)" ]] && eval "$(starship init bash)"
-##[[ -f "~repos/yadm/yadm/completion/bash/yadm" ]] && source ~/repos/yadm/yadm/completion/bash/yadm
 
 # This churns through files in $HOME/.bashrc.d if they are executable.
 BASHRCD="${HOME}/.bashrc.d"
