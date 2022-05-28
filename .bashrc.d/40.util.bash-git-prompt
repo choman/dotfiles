@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 setup_bash_git_prompt() {
    if [ -x "~/bash-git-prompt/gitprompt.sh" ]; then
