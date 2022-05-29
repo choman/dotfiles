@@ -21,13 +21,15 @@ setup_pyenv() {
 
 setup_poetry() {
     poetry_env="${HOME}/.poetry/env"
-    [[ -r "${peotry_env}" ]] && source "${peotry_env}"
+    # shellcheck disable=SC1090
+    [[ -r "${poetry_env}" ]] && source "${poetry_env}"
     unset poetry_env
 }
 
 install_poetry() {
   poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
   curl -sSL ${poetry_url} | python -
+  unset poetry_url
 }
 
 
