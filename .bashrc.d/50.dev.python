@@ -25,5 +25,11 @@ setup_poetry() {
     unset poetry_env
 }
 
+install_poetry() {
+  poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
+  curl -sSL ${poetry_url} | python -
+}
+
+
 setup_poetry
 setup_pyenv
