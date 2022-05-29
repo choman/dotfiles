@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+[[ -x "$(which zoxide)" ]] && eval "$(zoxide init bash)"
+
