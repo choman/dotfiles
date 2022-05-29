@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+BASHMARKS_FILE="${HOME}/repos/bashmarks/bashmarks.sh"
+GOTO_FILE="${HOME}/repos/goto/goto.sh"
+
+
+[[ -f "${BASHMARKS_FILE}" ]] && source "${BASHMARKS_FILE}" || echo "Please clone bashmarks"
+[[ -f "${GOTO_FILE}" ]] && source "${GOTO_FILE}" || echo "Please clone goto"
+
+unset BASHMARKS_FILE GOTO_FILE
+
