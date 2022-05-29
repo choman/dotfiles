@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+[[ -x "$(which direnv)" ]] && eval "$(direnv hook bash)"
+
+
