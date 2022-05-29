@@ -129,10 +129,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-install_poetry() {
-  poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
-  curl -sSL ${poetry_url} | python -
-}
+###install_poetry() {
+###  poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
+###  curl -sSL ${poetry_url} | python -
+###}
 
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$HOME/.local/bin
@@ -198,18 +198,18 @@ fi
 
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
-## Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="${PYENV_ROOT}/bin:${PATH}"
-if [[ -x "$(which pyenv)" ]]; then
-   echo "Settting up pyenv"
-   eval "$(pyenv init --path)"
-   #eval "$(pyenv virtualenv-init -)"
-fi
+##### Pyenv
+###export PYENV_ROOT="$HOME/.pyenv"
+###export PATH="${PYENV_ROOT}/bin:${PATH}"
+###if [[ -x "$(which pyenv)" ]]; then
+###   echo "Settting up pyenv"
+###   eval "$(pyenv init --path)"
+###   #eval "$(pyenv virtualenv-init -)"
+###fi
 
 
 # awesome command shell hooks
-[[ -r "${HOME}/.poetry/env" ]] && source $HOME/.poetry/env
+###[[ -r "${HOME}/.poetry/env" ]] && source $HOME/.poetry/env
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
 [[ -x "$(which direnv)" ]] && eval "$(direnv hook bash)"
 [[ -x "$(which aliases)" ]] && eval "$(aliases init --global)"
@@ -231,6 +231,7 @@ if [[ -d "${BASHRCD}" ]]; then
          . "$file"
       fi
    done
+   unset file
 fi
 
 BASH_COMPLETIONS="${HOME}/.bash_completion.d"
@@ -240,4 +241,6 @@ if [[ -d "${BASH_COMPLETIONS}" ]]; then
        echo " - Sourcing ${file}"
        source /home/choman/.bash_completion.d/$file
    done
+   unset file
 fi
+
