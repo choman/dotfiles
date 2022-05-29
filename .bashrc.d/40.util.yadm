@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-
 YADM_COMPLETION="${HOME}/repos/yadm/completion/bash/yadm"
-
 [[ -f "${YADM_COMPLETION}" ]] && source ${YADM_COMPLETION}
+unset YADM_COMPLETION
 
