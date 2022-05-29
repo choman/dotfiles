@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+[[ -x "$(which aliases)" ]] && eval "$(aliases init --global)"
+
