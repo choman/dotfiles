@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+setup_pyenv() {
+   ## Pyenv
+   export PYENV_ROOT="${HOME}/.pyenv"
+
+   if [[ ! -d "${PYENV_ROOT}" ]]; then
+      echo "NOT Settting up pyenv"
+      unset PYENV_ROOT
+      return
+   fi
+
+   export PATH="${PYENV_ROOT}/bin:${PATH}"
+
+   if [[ -x "$(which pyenv)" ]]; then
+      echo "Settting up pyenv"
+      eval "$(pyenv init --path)"
+      #eval "$(pyenv virtualenv-init -)"
+   fi
+}
+
+setup_poetry() {
+    poetry_env="${HOME}/.poetry/env"
+    [[ -r "${peotry_env}" ]] && source "${peotry_env}"
+    unset poetry_env
+}
+
+setup_poetry
+setup_pyenv
