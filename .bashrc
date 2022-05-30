@@ -82,18 +82,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-#### enable color support of ls and also add handy aliases
-###if [ -x /usr/bin/dircolors ]; then
-###    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-###    alias ls='ls --color=auto'
-###    #alias dir='dir --color=auto'
-###    #alias vdir='vdir --color=auto'
-###
-###    alias grep='grep --color=auto'
-###    alias fgrep='fgrep --color=auto'
-###    alias egrep='egrep --color=auto'
-###fi
-
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -146,12 +134,12 @@ export PATH="$PATH:$GOPATH/bin"
 [[ -d "/home/choman/.cargo/bin" ]]  && PATH="$PATH:/home/choman/.cargo/bin"
 [[ -d "/home/choman/.local/bin" ]]  && PATH="$PATH:/home/choman/.local/bin"
 
-if [ ! -d "$HOME/goto" ]; then 
-    source ~/.local/bin/bashmarks.sh
-    source ~/bashmarks/bashmarks.sh
-else
-    source ~/goto/goto.sh
-fi
+##if [ ! -d "$HOME/goto" ]; then 
+##    source ~/.local/bin/bashmarks.sh
+##    source ~/bashmarks/bashmarks.sh
+##else
+##    source ~/goto/goto.sh
+##fi
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
@@ -198,22 +186,9 @@ fi
 
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
-##### Pyenv
-###export PYENV_ROOT="$HOME/.pyenv"
-###export PATH="${PYENV_ROOT}/bin:${PATH}"
-###if [[ -x "$(which pyenv)" ]]; then
-###   echo "Settting up pyenv"
-###   eval "$(pyenv init --path)"
-###   #eval "$(pyenv virtualenv-init -)"
-###fi
-
 
 # awesome command shell hooks
-###[[ -r "${HOME}/.poetry/env" ]] && source $HOME/.poetry/env
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
-[[ -x "$(which direnv)" ]] && eval "$(direnv hook bash)"
-[[ -x "$(which aliases)" ]] && eval "$(aliases init --global)"
-[[ -x "$(which zoxide)" ]] && eval "$(zoxide init bash)"
 
 # Source awesome command completions
 #[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
