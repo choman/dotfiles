@@ -127,12 +127,12 @@ export PATH=$PATH:$GOROOT/bin:$HOME/.local/bin
 export GOPATH=$HOME/go-programs
 export PATH="$PATH:$GOPATH/bin"
 
-[[ -s "/home/choman/.gvm/scripts/gvm" ]] && source "/home/choman/.gvm/scripts/gvm"
-[[ -r /home/choman/.byobu/prompt ]] && . /home/choman/.byobu/prompt   #byobu-prompt#
+[[ -s "${HOME}/gvm/scripts/gvm" ]] && source "${HOME}/gvm/scripts/gvm"
+[[ -r ${HOME}/byobu/prompt ]] && . ${HOME}/byobu/prompt   #byobu-prompt#
 ## 
-[[ -d "/home/choman/.dotfiles/bin" ]]  && PATH="$PATH:/home/choman/.dotfiles/bin"
-[[ -d "/home/choman/.cargo/bin" ]]  && PATH="$PATH:/home/choman/.cargo/bin"
-[[ -d "/home/choman/.local/bin" ]]  && PATH="$PATH:/home/choman/.local/bin"
+[[ -d "${HOME}/dotfiles/bin" ]]  && PATH="$PATH:${HOME}/dotfiles/bin"
+[[ -d "${HOME}/cargo/bin" ]]  && PATH="$PATH:${HOME}/cargo/bin"
+[[ -d "${HOME}/local/bin" ]]  && PATH="$PATH:${HOME}/local/bin"
 
 ##if [ ! -d "$HOME/goto" ]; then 
 ##    source ~/.local/bin/bashmarks.sh
@@ -188,7 +188,7 @@ fi
 
 
 # awesome command shell hooks
-[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
+###[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
 
 # Source awesome command completions
 #[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
@@ -214,7 +214,7 @@ if [[ -d "${BASH_COMPLETIONS}" ]]; then
    for file in $(ls ${BASH_COMPLETIONS})
    do 
        echo " - Sourcing ${file}"
-       source /home/choman/.bash_completion.d/$file
+       source ${HOME}/bash_completion.d/$file
    done
    unset file
 fi
