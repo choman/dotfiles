@@ -1,3 +1,21 @@
+{% include "goto.common" %}
 downloads /home/choman/Downloads
 pcloud /home/choman/pCloudDrive
 dcw_baseline /home/choman/baseline/dcw_puppet
+aio-bundler /home/choman/repos/oadcgs/oadcgs-es-dcw-bundler-aio
+vi2e /home/choman/repos/vi2e/uc2s-account-setup
+# docker images
+oci-chrome /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-chrome
+oci-dhcpd /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-dhcpd
+oci-firefox /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-firefox
+oci-glxgears /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-glxgears
+oci-haproxy /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-haproxy
+oci-horizon /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-horizon
+oci-httpd /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-httpd
+oci-phpback /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-phpback
+oci-pidgin /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-pidgin
+oci-postgres /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-postgres
+oci-tftpd /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-tftpd
+oci-factory /home/choman/repos/oadcgs/oadcgs-es-oci-factory
+status /home/choman/repos/oadcgs/status_reports
+di2e-uc2s-account-setup /home/choman/repos/oadcgs/uc2s-account-setup
