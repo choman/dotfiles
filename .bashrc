@@ -12,7 +12,7 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-if [[ -f "$HOME/.work" ]]; then
+if [[ -f "$HOME/.config/work" ]]; then
    echo "setting yadm class"
    yadm config local.class work
 fi
