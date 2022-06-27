@@ -1,6 +1,6 @@
-# [Created by task 2.5.1 4/3/2017 09:48:13]
+# [Created by task 2.6.1 5/28/2022 16:58:42]
 # Taskwarrior program configuration file.
-# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
 # 'man task-sync' or 'man taskrc'
 
 # Here is an example of entries that use the default, override and blank values
@@ -8,47 +8,41 @@
 #   variable=      -- By specifying no value, this means no default
 #   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
 
+# You can also refence environment variables:
+#   variable=$HOME/task
+#   variable=$VALUE
+
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/.task
+data.location=/home/choman/.task
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
+
+#data.location=~/.local/share/task
+#hooks.location=~/.config/task/hooks
+#
+taskd.certificate=~/.task/private.certificate.pem
+taskd.key=~/.task/private.key.pem
+taskd.ca=~/.task/ca.cert.pem
+taskd.server=inthe.am:53589
+taskd.credentials=inthe_am/choman/d0beb820-8425-44d7-9835-c011ffeaf350
+taskd.trust=strict
 
 # Color theme (uncomment one to use)
-#include /usr/share/taskwarrior/light-16.theme
-#include /usr/share/taskwarrior/light-256.theme
-#include /usr/share/taskwarrior/dark-16.theme
-#include /usr/share/taskwarrior/dark-256.theme
-#include /usr/share/taskwarrior/dark-red-256.theme
-#include /usr/share/taskwarrior/dark-green-256.theme
-#include /usr/share/taskwarrior/dark-blue-256.theme
-#include /usr/share/taskwarrior/dark-violets-256.theme
-#include /usr/share/taskwarrior/dark-yellow-green.theme
-#include /usr/share/taskwarrior/dark-gray-256.theme
-#include /usr/share/taskwarrior/dark-gray-blue-256.theme
-#include /usr/share/taskwarrior/solarized-dark-256.theme
-#include /usr/share/taskwarrior/solarized-light-256.theme
-#include /usr/share/taskwarrior/no-color.theme
+#include light-16.theme
+#include light-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme
 
-##taskd.server=freecinc.com:53589
-##taskd.key=\/home\/choman\/.task\/freecinc_2a2dbc55.key.pem
-##taskd.certificate=\/home\/choman\/.task\/freecinc_2a2dbc55.cert.pem
-##taskd.ca=\/home\/choman\/.task\/freecinc_2a2dbc55.ca.pem
-##taskd.credentials=FreeCinc\/freecinc_2a2dbc55\/0537ca2b-76c6-426f-8dc9-a11a9dcfe34f
-
-taskd.certificate=/home/choman/.task/private.certificate.pem
-taskd.key=/home/choman/.task/private.key.pem
-taskd.ca=/home/choman/.task/ca.cert.pem
-taskd.server=taskwarrior.inthe.am:53589
-taskd.credentials=inthe_am/choman/d0beb820-8425-44d7-9835-c011ffeaf350
-taskd.trust=ignore hostname
-regex=on
-editor=vim
-
-context.me=project:me or +me
-context.work=project:work or +work
-context.epe=project:clients.epe or +epe
-context.homans=project:clients.homans or +homans
-context.home=project:home or +home
-context.geek=project:geek or tags:geek or +geek
-context.appt=project:appt or tags:work.appt or tags:appt or +appt
-context=appt
