@@ -7,5 +7,7 @@ GOTO_FILE="${HOME}/repos/goto/goto.sh"
 [[ -f "${BASHMARKS_FILE}" ]] && source "${BASHMARKS_FILE}" || echo "Please clone bashmarks"
 [[ -f "${GOTO_FILE}" ]] && source "${GOTO_FILE}" || echo "Please clone goto"
 
+alias g="goto"
+
 unset BASHMARKS_FILE GOTO_FILE
 
