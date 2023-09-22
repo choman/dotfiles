@@ -36,6 +36,7 @@
     pkgs.mosh
     pkgs.multipass
     pkgs.nix-info
+    pkgs.pandoc
     pkgs.ripgrep
     # pkgs.ripgrep-all
     pkgs.tealdeer
