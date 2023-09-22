@@ -24,7 +24,7 @@
 
     # tools
     pkgs.entr
-    pkgs.exa
+    pkgs.eza
     pkgs.mattermost-desktop
     pkgs.meld
     pkgs.nix-info
