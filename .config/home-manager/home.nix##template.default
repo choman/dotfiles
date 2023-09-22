@@ -3,7 +3,7 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "{{ YADM_USER }}";
+  home.username = "{{ yadm.user }}";
   home.homeDirectory = "/home/choman";
 
   # This value determines the Home Manager release that your configuration is
