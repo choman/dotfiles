@@ -26,6 +26,8 @@
     pkgs.meld
     pkgs.nix-info
     pkgs.tmsu
+    pkgs.tmux
+    pkgs.tmux-xpanes
     pkgs.xdg-ninja
 
     # dev tools
