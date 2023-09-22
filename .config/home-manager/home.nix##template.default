@@ -25,6 +25,8 @@
     # tools
     pkgs.meld
     pkgs.nix-info
+    pkgs.ripgrep
+    pkgs.ripgrep-all
     pkgs.tmsu
     pkgs.tmux
     pkgs.tmux-xpanes
