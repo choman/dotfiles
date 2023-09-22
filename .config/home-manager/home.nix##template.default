@@ -22,10 +22,14 @@
     # # "Hello, world!" when run.
     # pkgs.hello
 
-    pkgs.meld
+    # tools
     pkgs.nix-info
-    pkgs.vagrant
     pkgs.xdg-ninja
+
+    # dev tools
+    pkgs.meld
+    pkgs.vagrant
+    pkgs.packer
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
