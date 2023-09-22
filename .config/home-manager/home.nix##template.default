@@ -30,6 +30,7 @@
     pkgs.gnome-console
     pkgs.mattermost-desktop
     pkgs.meld
+    pkgs.mosh
     pkgs.nix-info
     pkgs.ripgrep
     # pkgs.ripgrep-all
