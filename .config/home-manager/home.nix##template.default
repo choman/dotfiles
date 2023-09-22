@@ -55,7 +55,7 @@
     pkgs.mdbook
     pkgs.mdbook-pagetoc
     pkgs.mdbook-toc
-    pkgs.termbook-cli
+    ##pkgs.termbook-cli
 
     # dev tools
     pkgs.meld
