@@ -23,7 +23,9 @@
     # pkgs.hello
 
     # tools
+    pkgs.meld
     pkgs.nix-info
+    pkgs.tmsu
     pkgs.xdg-ninja
 
     # dev tools
