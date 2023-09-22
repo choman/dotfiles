@@ -45,6 +45,7 @@
     pkgs.tmux
     pkgs.tmux-xpanes
     pkgs.xdg-ninja
+    pkgs.zoom-us
 
     # dev tools
     pkgs.meld
