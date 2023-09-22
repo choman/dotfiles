@@ -26,12 +26,15 @@
     pkgs.cryfs
     pkgs.entr
     pkgs.eza
+    pkgs.gnome-console
     pkgs.mattermost-desktop
     pkgs.meld
     pkgs.nix-info
     pkgs.ripgrep
     # pkgs.ripgrep-all
     pkgs.tealdeer
+    pkgs.terminator
+    pkgs.tilix
     #pkgs.tldr
     pkgs.tmsu
     pkgs.tmux
