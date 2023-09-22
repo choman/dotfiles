@@ -31,6 +31,8 @@
     pkgs.nix-info
     pkgs.ripgrep
     # pkgs.ripgrep-all
+    pkgs.tealdeer
+    pkgs.tldr
     pkgs.tmsu
     pkgs.tmux
     pkgs.tmux-xpanes
