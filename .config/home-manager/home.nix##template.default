@@ -50,6 +50,13 @@
     pkgs.xdg-ninja
     pkgs.zoom-us
 
+    # markdown book
+    pkgs.book-summary
+    pkgs.mdbook
+    pkgs.mdbook-toc
+    pkgs.pagetoc
+    pkgs.termbook
+
     # dev tools
     pkgs.meld
     pkgs.vagrant
