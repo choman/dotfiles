@@ -23,6 +23,9 @@
     # pkgs.hello
 
     # tools
+    pkgs.entr
+    pkgs.exa
+    pkgs.mattermost-desktop
     pkgs.meld
     pkgs.nix-info
     pkgs.ripgrep
