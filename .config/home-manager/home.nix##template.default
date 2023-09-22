@@ -27,12 +27,14 @@
     pkgs.bitwarden-cli
     pkgs.cryfs
     pkgs.direnv
+    pkgs.distrobox
     pkgs.entr
     pkgs.eza
     pkgs.gnome-console
     pkgs.mattermost-desktop
     pkgs.meld
     pkgs.mosh
+    pkgs.multipass
     pkgs.nix-info
     pkgs.ripgrep
     # pkgs.ripgrep-all
