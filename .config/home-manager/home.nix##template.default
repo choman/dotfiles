@@ -53,8 +53,8 @@
     # markdown book
     pkgs.book-summary
     pkgs.mdbook
+    pkgs.mdbook-pagetoc
     pkgs.mdbook-toc
-    pkgs.pagetoc
     pkgs.termbook-cli
 
     # dev tools
