@@ -23,6 +23,7 @@
     # pkgs.hello
 
     # tools
+    pkgs.cryfs
     pkgs.entr
     pkgs.eza
     pkgs.mattermost-desktop
