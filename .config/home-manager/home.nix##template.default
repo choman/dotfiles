@@ -24,6 +24,7 @@
 
     # tools
     pkgs.cryfs
+    pkgs.direnv
     pkgs.entr
     pkgs.eza
     pkgs.gnome-console
