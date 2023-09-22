@@ -23,6 +23,8 @@
     # pkgs.hello
 
     # tools
+    pkgs.bitwarden
+    pkgs.bitwarden-cli
     pkgs.cryfs
     pkgs.direnv
     pkgs.entr
