@@ -34,6 +34,7 @@
     # pkgs.ripgrep-all
     pkgs.tealdeer
     pkgs.terminator
+    pkgs.termius
     pkgs.tilix
     #pkgs.tldr
     pkgs.tmsu
