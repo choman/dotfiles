@@ -32,7 +32,7 @@
     pkgs.ripgrep
     # pkgs.ripgrep-all
     pkgs.tealdeer
-    pkgs.tldr
+    #pkgs.tldr
     pkgs.tmsu
     pkgs.tmux
     pkgs.tmux-xpanes
