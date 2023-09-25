@@ -17,51 +17,52 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
 
     # tools
-    pkgs.bitwarden
-    pkgs.bitwarden-cli
-    pkgs.cryfs
-    pkgs.direnv
-    pkgs.distrobox
-    pkgs.entr
-    pkgs.eza
-    pkgs.gnome-console
-    pkgs.mattermost-desktop
-    pkgs.meld
-    pkgs.mosh
-    pkgs.multipass
-    pkgs.nix-info
-    pkgs.pandoc
-    pkgs.paperwork
-    pkgs.ripgrep
-    # pkgs.ripgrep-all
-    pkgs.tealdeer
-    pkgs.terminator
-    pkgs.termius
-    pkgs.tilix
-    #pkgs.tldr
-    pkgs.tmsu
-    pkgs.tmux
-    pkgs.tmux-xpanes
-    pkgs.xdg-ninja
-    pkgs.zoom-us
+    bitwarden
+    bitwarden-cli
+    cryfs
+    direnv
+    distrobox
+    entr
+    eza
+    gnome-console
+    mattermost-desktop
+    meld
+    mosh
+    multipass
+    nix-info
+    newsflash
+    pandoc
+    paperwork
+    ripgrep
+    # ripgrep-all
+    tealdeer
+    terminator
+    termius
+    tilix
+    #tldr
+    tmsu
+    tmux
+    tmux-xpanes
+    xdg-ninja
+    zoom-us
 
     # markdown book
-    pkgs.book-summary
-    pkgs.mdbook
-    pkgs.mdbook-pagetoc
-    pkgs.mdbook-toc
-    ##pkgs.termbook-cli
+    book-summary
+    mdbook
+    mdbook-pagetoc
+    mdbook-toc
+    ##termbook-cli
 
     # dev tools
-    pkgs.meld
-    pkgs.vagrant
-    pkgs.packer
+    meld
+    vagrant
+    packer
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
