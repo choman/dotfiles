@@ -33,6 +33,7 @@
     cryfs
     direnv
     distrobox
+    dtrx
     entr
     eza
     gnome-console
@@ -55,6 +56,8 @@
     tmux
     tmux-xpanes
     xdg-ninja
+    yadm
+    yt-dlp
     zoom-us
 
     # markdown book
