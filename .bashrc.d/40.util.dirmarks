@@ -4,8 +4,8 @@ BASHMARKS_FILE="${HOME}/repos/bashmarks/bashmarks.sh"
 GOTO_FILE="${HOME}/repos/goto/goto.sh"
 
 
-[[ -f "${BASHMARKS_FILE}" ]] && source "${BASHMARKS_FILE}" || echo "Please clone bashmarks"
-[[ -f "${GOTO_FILE}" ]] && source "${GOTO_FILE}" || echo "Please clone goto"
+source_if_exists "${BASHMARKS_FILE}"
+source_if_exists "${GOTO_FILE}"
 
 alias g="goto"
 
