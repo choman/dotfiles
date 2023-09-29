@@ -60,6 +60,15 @@
     yt-dlp
     zoom-us
 
+    # office tools
+    onlyoffice-desktopeditors
+
+    # Todo
+    dstask
+    taskwarrior
+    taskwarrior-tui
+
+
     # markdown book
     book-summary
     mdbook
