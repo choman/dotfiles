@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-[[ -x "$(which aliases)" ]] && eval "$(aliases init --global)"
+[[ -x "$(which aliases)" ]] && eval "$(aliases init --global)" || echo "Command not found: aliases"
 
