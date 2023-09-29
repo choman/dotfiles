@@ -27,6 +27,10 @@
     # # "Hello, world!" when run.
     # pkgs.hello
 
+
+    # editors
+    neovim
+
     # tools
     bitwarden
     bitwarden-cli
