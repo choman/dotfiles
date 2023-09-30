@@ -61,17 +61,17 @@
     multipass
     navi
     neofetch
-    screenfetch
     newsflash
     nix-info
     pandoc
     paperwork
     procs # better ps
     rclone
-    rip # better rm
     ripgrep
     # ripgrep-all
+    rm-improved
     rmlint
+    screenfetch
     sd # Better sed
     srm
     tealdeer
