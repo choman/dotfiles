@@ -32,34 +32,59 @@
     neovim
 
     # tools
+    aria2c
+    ascicinema
+    bat
     bitwarden
     bitwarden-cli
+    browsh
+    buku
     cryfs
+    diff-so-fancy
     direnv
     distrobox
     dtrx
-    entr
+    exiftool
     eza
+    fd
+    fdupes
+    figlet
+    fzf
     gnome-console
+    hyperfine
+    jq
+    just
     mattermost-desktop
     meld
     mosh
+    most # better less
     multipass
+    navi
+    neofetch
     newsflash
     nix-info
     pandoc
     paperwork
+    procs # better ps
+    rclone
+    rip # better rm
     ripgrep
     # ripgrep-all
+    rmlint
+    sd # Better sed
+    srm
     tealdeer
     terminator
     termius
+    thefuck
     tilix
-    #tldr
+    #tldr # see tealdeer
+    tmate
     tmsu
     tmux
     tmux-xpanes
     xdg-ninja
+    xsel
     yadm
     yt-dlp
     zoom-us
@@ -67,10 +92,32 @@
     # office tools
     onlyoffice-desktopeditors
 
+    # search tools
+    ddgr
+
     # Todo
     dstask
     taskwarrior
     taskwarrior-tui
+
+    # System tools
+    bpytop
+    btop
+    glances
+    rclone
+    tre # better tree?
+    tree
+
+    # Network tools
+    bandwhich
+    dig # better than dig
+    dog # better than dig
+    gping
+    mtr
+    speedtest-cli
+
+    # cloud
+    kdash
 
 
     # markdown book
@@ -80,10 +127,17 @@
     mdbook-toc
     ##termbook-cli
 
+    # container tools
+    ctop
+    lazydocker
+
     # dev tools
+    cloc
+    lazygit
     meld
-    vagrant
     packer
+    scc
+    vagrant
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
