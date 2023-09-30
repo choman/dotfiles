@@ -15,8 +15,7 @@ DIRS=(
 checkvm()
 {
     echo "Checking if I am a VM - not virt-what"
-    dmesg | grep -qi hypervisor
-    if [ $? -eq 0 ]; then
+    if ! systemd-detect-virt; then
         AMIVM=true
     fi
 }
@@ -177,6 +176,7 @@ fi
 gsettings set com.canonical.indicator.datetime show-day true
 gsettings set com.canonical.indicator.datetime show-date true
 gsettings set com.canonical.Unity integrated-menus true
+gsettings set org.gnome.desktop.interface locate-pointer true
 
 
 # gnome 17.10
@@ -184,16 +184,16 @@ gsettings set org.gnome.desktop.interface clock-show-date true
 
 
 # dconf watch /
-dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/hsize 2
-dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
-dconf write /com/canonical/indicator/keyboard/visible false
+##dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/hsize 2
+##dconf write /org/compiz/profiles/unity-lowgfx/plugins/core/vsize 2
+##dconf write /com/canonical/indicator/keyboard/visible false
 
 # really not a vm then do stuff on physical system
-if ! $AMIVM; then
-   dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
-fi
+###if ! $AMIVM; then
+###   dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
+###fi
 
-dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
+###dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32
 ##dconf write /com/canonical/unity/launcher/favorites ['application://org.gnome.Nautilus.desktop', 'application://firefox.desktop', 'application://libreoffice-writer.desktop', 'application://libreoffice-calc.desktop', 'application://libreoffice-impress.desktop', 'application://org.gnome.Software.desktop', 'application://ubuntu-amazon-default.desktop', 'application://unity-control-center.desktop', 'application://virtualbox.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']
 
 ##dconf write /org/compiz/profiles/unity/plugins/core/vsize 1
