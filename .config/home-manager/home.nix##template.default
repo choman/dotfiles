@@ -101,6 +101,10 @@
     taskwarrior
     taskwarrior-tui
 
+    # pdf
+    masterpdfeditor
+    pdfstudio2022
+
     # System tools
     btop
     glances
