@@ -18,3 +18,8 @@
 
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
+[credential "https://gitlab.com"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
