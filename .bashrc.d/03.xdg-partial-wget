@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+alias wget="wget --hsts-file=${XDG_DATA_HOME}/wget-hsts"
+
