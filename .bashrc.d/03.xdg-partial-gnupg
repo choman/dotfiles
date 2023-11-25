@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+

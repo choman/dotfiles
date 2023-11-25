@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export WORKON_HOME="${XDG_DATA_HOME}/virtualenvs"                                                                   
+

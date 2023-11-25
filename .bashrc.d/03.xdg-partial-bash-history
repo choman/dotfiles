@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+                                                                                                                    
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
+
