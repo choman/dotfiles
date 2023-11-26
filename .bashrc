@@ -323,3 +323,6 @@ export SCM_CHECK=true
 
 # Load Bash It
 source_if_exists "$BASH_IT"/bash_it.sh
+
+# Hook for desk activation
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
