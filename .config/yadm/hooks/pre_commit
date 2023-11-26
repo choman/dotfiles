@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-echo "he;llo"
+echo "hello"
+
+exit 0
