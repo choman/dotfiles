@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # This hooks script syncs task warrior to the configured task server.
 # The on-exit event is triggered once, after all processing is complete.
 
