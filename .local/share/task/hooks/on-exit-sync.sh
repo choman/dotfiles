@@ -11,3 +11,11 @@ while read modified_task
 do
     n=$(($n + 1))
 done
+
+if (($n > 0)); then
+    task sync >> ~/.config/task/sync_hook.log
+fi
+
+exit 0
+
+
