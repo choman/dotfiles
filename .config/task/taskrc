@@ -15,7 +15,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=/home/choman/.task
+data.location=$XDG_DATA_HOME/task
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
@@ -23,11 +23,11 @@ data.location=/home/choman/.task
 #data.location=~/.local/share/task
 #hooks.location=~/.config/task/hooks
 #
-taskd.certificate=~/.task/private.certificate.pem
-taskd.key=~/.task/private.key.pem
-taskd.ca=~/.task/ca.cert.pem
-taskd.server=inthe.am:53589
-taskd.credentials=inthe_am/choman/d0beb820-8425-44d7-9835-c011ffeaf350
+taskd.certificate=\/home\/choman\/.config\/task\/wingtask_certs\/choman@gmail.com.cert.pem
+taskd.key=\/home\/choman\/.config\/task\/wingtask_certs\/choman@gmail.com.key.pem
+taskd.ca=\/home\/choman\/.config\/task\/wingtask_certs\/letsencrypt_root_cert.pem
+taskd.server=app.wingtask.com:53589
+taskd.credentials=WingTask\/choman@gmail.com\/d5858868-5703-4b32-9e48-22fe2d8ff7fb
 taskd.trust=strict
 
 # Color theme (uncomment one to use)
@@ -46,3 +46,5 @@ taskd.trust=strict
 #include solarized-light-256.theme
 #include no-color.theme
 
+news.version=2.6.0
+alias.rm=delete
