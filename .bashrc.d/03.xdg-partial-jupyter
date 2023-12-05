@@ -1,0 +1,5 @@
+#!/usr/bin/env bash 
+
+
+export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
+
