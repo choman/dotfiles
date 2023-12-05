@@ -154,12 +154,13 @@ source_if_exists "${HOME}/byobu/prompt"
 [[ -d "${HOME}/cargo/bin" ]]  && PATH="$PATH:${HOME}/cargo/bin"
 [[ -d "${HOME}/local/bin" ]]  && PATH="$PATH:${HOME}/local/bin"
 
-##if [ ! -d "$HOME/goto" ]; then 
-##    source ~/.local/bin/bashmarks.sh
-##    source ~/bashmarks/bashmarks.sh
-##else
-##    source ~/goto/goto.sh
-##fi
+if [[ ! -d "$HOME/repos/goto" ]]; then 
+    source ~/.local/bin/bashmarks.sh
+    source ~/bashmarks/bashmarks.sh
+else
+    echo "sourcing goto.sh"
+    source ~/repos/goto/goto.sh
+fi
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
@@ -233,8 +234,8 @@ BASH_COMPLETIONS="${HOME}/.bash_completion.d"
 if [[ -d "${BASH_COMPLETIONS}" ]]; then
    for file in $(ls ${BASH_COMPLETIONS})
    do 
-       echo " - Sourcing ${file}"
        source_if_exists "${BASH_COMPLETIONS}/${file}"
+       printf " - Sourcing ${file} ${GREEN}success${NC}\n"
    done
    unset file
 fi
