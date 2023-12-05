@@ -11,7 +11,7 @@
 
 # Allow local customizations in the .gitconfig_local file
 [include]
-	path = ~/.gitconfig_local
+	path = ~/.config/git/config_local
 
 [alias]
     lg = log --topo-order --all --graph --date=local --pretty=format:'%C(green)%h%C(reset) %><(55,trunc)%s%C(red)%d%C(reset) %C(blue)[%an]%C(reset) %C(yellow)%ad%C(reset)%n'
@@ -21,8 +21,31 @@
 	ff = only
 [init]
 	defaultBranch = main
+[help]
+	autocorrect = 20
+
+
+[includeIf "gitdir:~/repos/odin/"]
+	path = ~/.config/git/config-odin
+
+[includeIf "gitdir:~/repos/platform1/"]
+	path = ~/.config/git/config-platform1
+
+[credential]
+	helper = cache --timeout 7200
+##	helper = !/usr/bin/glab auth git-credential
+##	helper = oauth
+
 [credential "https://gitlab.com"]
 	helper = 
 	helper = !/usr/bin/glab auth git-credential
-[help]
-	autocorrect = 20
+
+[credential "https://gitlab.odin.dso.mil"]
+	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
+
+[credential "https://gitlab.example.com"]
+	oauthScopes = read_repository
+	oauthAuthURL = /oauth/authorize
+	oauthTokenURL = /oauth/token
+	oauthScopes = read_repository
+	oauthClientId = ddjsd
