@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export GOPATH="${XDG_DATA_HOME}/go"
+
