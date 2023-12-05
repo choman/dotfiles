@@ -1,6 +1,8 @@
+#!/usr/bin/env bash -x
 
 install() {
-   case "$1" 
+
+   case "$1" in
       starship)
          install_starship
          ;;
