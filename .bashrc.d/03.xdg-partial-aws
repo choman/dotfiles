@@ -1,8 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+AWS_HOME="${XDG_CONFIG_HOME}/aws"
 
-mkdir "${XDG_CONFIG_HOME}/aws"
+if [[ ! -d  "${AWS_HOME}" ]]; then 
+    mkdir "${AWS_HOME}"
+fi
 
-export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME}/aws/credentials"
-export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
+export AWS_SHARED_CREDENTIALS_FILE="${AWS_HOME}/credentials"
+export AWS_CONFIG_FILE="${AWS_HOME}/config"
 
