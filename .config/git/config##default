@@ -5,6 +5,7 @@
 	editor = vim
 [push]
 	default = simple
+	autoSetupRemote = true
 [grep]
 	lineNumber = true
 
