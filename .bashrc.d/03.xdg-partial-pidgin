@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+alias pidgin="pidgin --config=${XDG_DATA_HOME}/purple"
+
