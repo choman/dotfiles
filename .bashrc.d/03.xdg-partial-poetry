@@ -1,0 +1,4 @@
+#!/usr/bin/env bash 
+
+export POETRY_HOME="${XDG_DATA_HOME}/poetry"
+
