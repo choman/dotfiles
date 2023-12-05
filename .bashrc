@@ -240,7 +240,7 @@ if [[ -d "${BASH_COMPLETIONS}" ]]; then
    unset file
 fi
 
-source_if_exists "$HOME/.cargo/env"
+source_if_exists "$HOME/.config/cargo/env"
 
 # If not running interactively, don't do anything
 case $- in
