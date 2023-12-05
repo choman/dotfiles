@@ -1,0 +1,5 @@
+#!/usr/bin/env bash 
+
+
+if [[ ~/repo/goto/goto.sh ]]; then 
+
