@@ -2,7 +2,7 @@
 
 setup_pyenv() {
    ## Pyenv - follow xdg
-   if [[ -z "${PYENV_ROOT }}" ]]; then
+   if [[ -z "${PYENV_ROOT}}" ]]; then
        export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
    fi 
 
@@ -17,7 +17,7 @@ setup_pyenv() {
    if [[ -x "$(which pyenv)" ]]; then
       echo "Settting up pyenv"
       eval "$(pyenv init --path)"
-      #eval "$(pyenv virtualenv-init -)"
+      eval "$(pyenv virtualenv-init -)"
    fi
 }
 
@@ -37,3 +37,4 @@ install_poetry() {
 
 setup_poetry
 setup_pyenv
+
