@@ -17,7 +17,7 @@ alias wire="nohup /opt/Wire/wire &"
 ##alias python=/usr/bin/python3
 ##alias pip=/usr/bin/pip3
 
-if [ -d ~/goto ]; then
+if [[ -d ~/repos/goto ]]; then
     alias g="goto"
 fi
 
