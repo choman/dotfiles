@@ -3,19 +3,69 @@ downloads /home/choman/Downloads
 pcloud /home/choman/pCloudDrive
 dcw_baseline /home/choman/baseline/dcw_puppet
 aio-bundler /home/choman/repos/oadcgs/oadcgs-es-dcw-bundler-aio
-vi2e /home/choman/repos/vi2e/uc2s-account-setup
-# docker images
-oci-chrome /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-chrome
-oci-dhcpd /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-dhcpd
-oci-firefox /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-firefox
-oci-glxgears /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-glxgears
-oci-haproxy /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-haproxy
-oci-horizon /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-horizon
-oci-httpd /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-httpd
-oci-phpback /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-phpback
-oci-pidgin /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-pidgin
-oci-postgres /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-postgres
-oci-tftpd /home/choman/repos/oadcgs/oadcgs-es-oci-dcw-tftpd
-oci-factory /home/choman/repos/oadcgs/oadcgs-es-oci-factory
+
+# dcw misc
+dcw-builder /home/choman/repos/odin/dcgs/oadcgs-es-dcw-builder
+dcw-warehouse /home/choman/repos/odin/dcgs/oadcgs-es-dcw-warehouse
+oci-factory /home/choman/repos/odin/dcgs/oadcgs-es-oci-factory
+
+# dcw bundlers
+bundler-aio /home/choman/repos/odin/dcgs/oadcgs-es-dcw-bundler-aio
+bundler-iso /home/choman/repos/odin/dcgs/oadcgs-es-dcw-bundler-iso
+bundler-puppet /home/choman/repos/odin/dcgs/oadcgs-es-dcw-bundler-puppet
+bundler-puppet-third-party /home/choman/repos/odin/dcgs/oadcgs-es-dcw-bundler-puppet-third-party
+
+# dcw oci images
+oci-arts /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-arts
+oci-chrome /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-chrome
+oci-dhcpd /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-dhcpd
+oci-firefox /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-firefox
+oci-glxgears /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-glxgears
+oci-haproxy /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-haproxy
+oci-horizon /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-horizon
+oci-httpd /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-httpd
+oci-javafx /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-javafx
+oci-phpback /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-phpback
+oci-pidgin /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-pidgin
+oci-postgres /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-postgres
+oci-tftpd /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-tftpd
+
+# dcw puppet modules
+puppet-arts /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-arts
+puppet-chrome /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-chrome
+puppet-ctop /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-ctop
+puppet-disable-linstaller /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-disable-linstaller
+puppet-docker /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-docker
+puppet-feedback /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-feedback
+puppet-firefox /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-firefox
+puppet-glxgears /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-glxgears
+puppet-gnome-extensions /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-gnome-extensions
+puppet-gnome-menu /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-gnome-menu
+puppet-harbor /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-harbor
+puppet-horizon /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-horizon
+puppet-ifc /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-ifc
+puppet-isilon-fix /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-isilon-nfs-fix
+puppet-javafx /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-javafx
+puppet-kickstart /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-kickstart
+puppet-libreoffice /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-libreoffice
+puppet-nobrowsers /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-nobrowsers
+puppet-nochrome /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-nochrome
+puppet-nofirefox /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-nofirefox
+puppet-notary /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-notary
+puppet-oci-launcher /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-oci-launcher
+puppet-oci-nvidia /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-oci-nvidia
+puppet-openxt /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-openxt
+puppet-pidgin /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-pidgin
+puppet-podman /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-podman
+puppet-printer /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-printer
+puppet-sudoers /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-sudoers
+puppet-tmp-mount /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-tmp-mount
+puppet-user-docs /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-user-docs
+
+# vi2e, amps, amas, uc2s
+vi2e-amas /home/choman/repos/odin/vi2e/account-management-auditing-solution
+vi2e-amps /home/choman/repos/odin/vi2e/account-management-provisioning-solution
+vi2e-uc2s /home/choman/repos/odin/vi2e/uc2s-account-setup
+
+# 
 status /home/choman/repos/oadcgs/status_reports
-di2e-uc2s-account-setup /home/choman/repos/oadcgs/uc2s-account-setup
