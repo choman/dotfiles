@@ -2,17 +2,18 @@
 # shellcheck disable=SC2034
 
 # Define some text attributes and colours:
-BOLD='\E[1m'
-ital='\E[3m'
-red='\E[0;31m'      # red
-RED='\E[1;31m'      # red and bold
-green='\E[0;32m'    # green
-GREEN='\E[1;32m'    # green and bold
-blue='\E[0;34m'     # blue
-BLUE='\E[1;34m'     # blue and bold
-cyan='\E[0;36m'     # cyan
-CYAN='\E[1;36m'     # cyan and bold
-NA='\E(B\E[m'       # No attributes
+export BOLD='\E[1m'
+export ital='\E[3m'
+export red='\E[0;31m'      # red
+export RED='\E[1;31m'      # red and bold
+export green='\E[0;32m'    # green
+export GREEN='\E[1;32m'    # green and bold
+export blue='\E[0;34m'     # blue
+export BLUE='\E[1;34m'     # blue and bold
+export cyan='\E[0;36m'     # cyan
+export CYAN='\E[1;36m'     # cyan and bold
+export NA='\E(B\E[m'       # No attributes
+export NC='\E(B\E[m'       # No attributes
 
 # enable colour support of ls and ?grep
 if [[ -x /usr/bin/dircolors ]]; then
