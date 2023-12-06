@@ -1,4 +1,4 @@
-#!bin/bash
+#!/usr/bin/env bash
 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 mkdir -p ${CARGO_HOME}
