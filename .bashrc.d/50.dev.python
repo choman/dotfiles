@@ -2,7 +2,7 @@
 
 setup_pyenv() {
    ## Pyenv - follow xdg
-   if [[ -z "${PYENV_ROOT}}" ]]; then
+   if [[ -z "${PYENV_ROOT}" ]]; then
        export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
    fi 
 
