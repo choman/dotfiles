@@ -32,8 +32,8 @@
 	path = ~/.config/git/config-platform1
 
 [credential]
-	helper = cache --timeout 7200
-##	helper = !/usr/bin/glab auth git-credential
+	helper = 
+###	helper = !/usr/bin/glab auth git-credential
 ##	helper = oauth
 
 [credential "https://gitlab.com"]
@@ -41,7 +41,12 @@
 	helper = !/usr/bin/glab auth git-credential
 
 [credential "https://gitlab.odin.dso.mil"]
+	username = oauth2
+	helper = "!~/bin/gopass-git.sh"
 	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
+#	helper = "echo \"password=$(gopass show -o test1)\""
+#	helper = gopass --store=test1
+#	helper = oauth
 
 [credential "https://gitlab.example.com"]
 	oauthScopes = read_repository
