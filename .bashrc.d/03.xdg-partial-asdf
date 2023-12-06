@@ -1,5 +1,5 @@
 #!/bin/bash
 
 export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"
-mkdir -p ${ASDF_DATA_DIR}
+mkdir -pv "${ASDF_DATA_DIR}"
 
