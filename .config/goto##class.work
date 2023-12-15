@@ -69,3 +69,6 @@ vi2e-uc2s /home/choman/repos/odin/vi2e/uc2s-account-setup
 
 # 
 status /home/choman/repos/caci/status_reports
+pme-playbooks /home/choman/repos/caci/ansible-playbooks-pme
+pme-role-control-motd /home/choman/repos/caci/ansible-role-control-motd
+pme-role-control-passwd-rules /home/choman/repos/caci/ansible-role-control-passwd-rules
