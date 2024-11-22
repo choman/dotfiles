@@ -16,3 +16,6 @@
 [submodule "repos/goto"]
 	path = repos/github/goto
 	url = https://github.com/iridakos/goto
+[submodule ".config/yadm/plugins/tpm"]
+	path = .config/yadm/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
