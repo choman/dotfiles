@@ -114,10 +114,17 @@ function install_vbox_completions
        https://raw.githubusercontent.com/tfmalt/bash-completion-virtualbox/master/vboxmanage_completion.bash
 }
 
-function install_linuxbrew
+function install_homebrew
 {
-   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+   sudo apt install -y build-essential procps curl file git
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
+
+# Deprecated
+##function install_linuxbrew
+##{
+##   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+##}
 
 
 checkvm
@@ -134,7 +141,8 @@ setup_macfun
 
 install_yadm_completions
 install_vbox_completions
-install_linuxbrew
+##install_linuxbrew
+install_homebrew
 
 # update yadm remote, not sure why I do this
 #yadm remote set-url origin https://choman@github.com/choman/dotfiles
