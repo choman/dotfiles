@@ -9,6 +9,7 @@ DIRS=(
     "$HOME/.bash_completion.d"
     ${BASH_COMPLETION_HOME}
     "$HOME/.config/bin"
+    "$HOME/.local/share/bin"
     "$BIN_DIR"
   )
 
@@ -96,8 +97,6 @@ function setup_macfun
 
 function install_yadm_completions
 {
-   
-
    if [ $? -eq 0 ]; then
       DC="aria2c -x 8"
    else

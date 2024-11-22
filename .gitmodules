@@ -1,8 +1,8 @@
 [submodule "bashmarks"]
-	path = bashmarks
+	path = repos/github/bashmarks
 	url = https://github.com/huyng/bashmarks
 [submodule "bash-git-prompt"]
-	path = bash-git-prompt
+	path = repos/github/bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt
 [submodule ".git-open"]
 	path = .git-open
