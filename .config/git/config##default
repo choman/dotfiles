@@ -42,11 +42,17 @@
 
 [credential "https://gitlab.odin.dso.mil"]
 	username = oauth2
-	helper = "!~/bin/gopass-git.sh"
-	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
+	helper = "!~/bin/gopass-git.sh oadcgs/odin/gitlab_token"
+#	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
 #	helper = "echo \"password=$(gopass show -o test1)\""
 #	helper = gopass --store=test1
 #	helper = oauth
+
+[credential "https://gitlab.csde.caci.com"]
+	username = oauth2
+	helper = "!~/bin/gopass-git.sh caci-csde/GITLAB_TOKEN"
+#	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
+#	helper = "echo \"password=$(gopass show -o test1)\""
 
 [credential "https://gitlab.example.com"]
 	oauthScopes = read_repository

@@ -20,6 +20,7 @@ oci-arts /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-arts
 oci-chrome /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-chrome
 oci-dhcpd /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-dhcpd
 oci-firefox /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-firefox
+oci-firefox-itshop /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-firefox-itshop
 oci-glxgears /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-glxgears
 oci-haproxy /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-haproxy
 oci-horizon /home/choman/repos/odin/dcgs/oadcgs-es-dcw-oci-horizon
@@ -63,12 +64,86 @@ puppet-tmp-mount /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-tmp-mount
 puppet-user-docs /home/choman/repos/odin/dcgs/oadcgs-es-dcw-puppet-user-docs
 
 # vi2e, amps, amas, uc2s
+amas /home/choman/repos/odin/vi2e/account-management-auditing-solution
+amps /home/choman/repos/odin/vi2e/account-management-provisioning-solution
 vi2e-amas /home/choman/repos/odin/vi2e/account-management-auditing-solution
 vi2e-amps /home/choman/repos/odin/vi2e/account-management-provisioning-solution
 vi2e-uc2s /home/choman/repos/odin/vi2e/uc2s-account-setup
 
 # 
 status /home/choman/repos/caci/status_reports
+
+
+# Ansible repos
+repos-caci /home/choman/repos/caci
+anisble-role-virtual-tools /home/choman/repos/caci/ansible-role-dev-virtual-tools
+ansible-pme-control-repo /home/choman/repos/caci/ansible-playbooks-pme
+ansible-pme /home/choman/repos/caci/ansible-playbooks-pme
+ansible-ppa-git /home/choman/repos/caci/ansible-role-dev-ppa-git
+ansible-ppa-libreoffice /home/choman/repos/caci/ansible-role-dev-ppa-libreoffice
+
+# controls
+ansible-role-control-antivirus /home/choman/repos/caci/ansible-role-control-antivirus
+ansible-role-control-chrony /home/choman/repos/caci/ansible-role-control-chrony
+ansible-role-control-firewall /home/choman/repos/caci/ansible-role-control-firewall
+ansible-role-control-logwatch /home/choman/repos/caci/ansible-role-control-logwatch
+ansible-role-control-lynis /home/choman/repos/caci/ansible-role-control-lynis
+ansible-role-control-motd /home/choman/repos/caci/ansible-role-control-motd
+ansible-role-control-pwquality /home/choman/repos/caci/ansible-role-control-pwquality
+ansible-role-control-session-timeout /home/choman/repos/caci/ansible-role-control-session-timeout
+ansible-role-control-usbguard /home/choman/repos/caci/ansible-role-control-usbguard
+ansible-role-control-wazuh /home/choman/repos/caci/ansible-role-control-wazuh
+
+
+# General roles
+ansible-appgate /home/choman/repos/caci/ansible-role-appgate
+ansible-bat /home/choman/repos/caci/ansible-role-bat
+ansible-common-mounts /home/choman/repos/caci/ansible-role-common-mounts
+ansible-common-tools /home/choman/repos/caci/ansible-role-dev-common-tools
+ansible-config-datetime /home/choman/repos/caci/ansible-role-config-datetime
+ansible-datetime-apt-fix /home/choman/repos/caci/ansible-role-dev-datetime-apt-fix
+ansible-direnv /home/choman/repos/caci/ansible-role-direnv
+ansible-disable-unattended-upgrades /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-docker /home/choman/repos/caci/ansible-role-dev-docker
+ansible-firefox /home/choman/repos/caci/ansible-role-dev-firefox
+ansible-glab /home/choman/repos/caci/ansible-role-glab
+ansible-kvm /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-lazygit /home/choman/repos/caci/ansible-role-lazygit
+ansible-mounts /home/choman/repos/caci/ansible-role-common-mounts
+ansible-nixos /home/choman/repos/caci/ansible-role-dev-nixos
+ansible-opentofu /home/choman/repos/caci/ansible-role-dev-opentofu
+ansible-pme-certs /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-ppa-chrome /home/choman/repos/caci/ansible-role-dev-ppa-chrome
+ansible-ppa-git /home/choman/repos/caci/ansible-role-dev-ppa-git
+ansible-ppa-gopass /home/choman/repos/caci/ansible-role-dev-ppa-gopass
+ansible-ppa-hashicorp /home/choman/repos/caci/ansible-role-dev-ppa-hashicorp
+ansible-ppa-libreoffice /home/choman/repos/caci/ansible-role-dev-ppa-libreoffice
+ansible-ppa-onlyoffice /home/choman/repos/caci/ansible-role-dev-ppa-onlyoffice
+ansible-ppa-tmsu /home/choman/repos/caci/ansible-role-dev-ppa-tmsu
+ansible-proxmox /home/choman/repos/caci/ansible-role-proxmox
+ansible-pyenv /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-smartcard /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-starship /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-task-functions /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-user-accounts /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-virtual-tools /home/choman/repos/caci/ansible-role-dev-kvm
+ansible-zoom /home/choman/repos/caci/ansible-role-dev-kvm
+
+#
+gitlab-runner /home/choman/repos/odin/dcgs/oadcgs-es-gitlab-runner
 pme-playbooks /home/choman/repos/caci/ansible-playbooks-pme
 pme-role-control-motd /home/choman/repos/caci/ansible-role-control-motd
 pme-role-control-passwd-rules /home/choman/repos/caci/ansible-role-control-passwd-rules
+dcw-trivydb /home/choman/repos/odin/dcgs/oadcgs-es-dcw-trivydb
+
+#
+dcw-test-env-wiki /home/choman/repos/odin/dcgs/oadcgs-es-dcw-test-env.wiki
+pme-omaha-lab /home/choman/repos/caci/pme-omaha-lab
+pipeline-alpine /home/choman/repos/odin/dcgs/oadcgs-es-dcw-pipeline-alpine
+pipeline-dind /home/choman/repos/odin/dcgs/oadcgs-es-dcw-pipeline-dind
+pipeline-megalinter /home/choman/repos/odin/dcgs/oadcgs-es-dcw-pipeline-megalinter
+pipeline-pdk /home/choman/repos/odin/dcgs/oadcgs-es-dcw-pipeline-pdk
+pipeline-python /home/choman/repos/odin/dcgs/oadcgs-es-dcw-pipeline-python
+pipeline-ubuntu /home/choman/repos/odin/dcgs/oadcgs-es-dcw-pipeline-ubuntu
+ansible-config-skeleton /home/choman/repos/caci/ansible-role-config-skeleton
+ansible-set-hostname /home/choman/repos/caci/ansible-role-set-hostname
