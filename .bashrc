@@ -217,6 +217,7 @@ fi
 
 # This churns through files in $HOME/.bashrc.d if they are executable.
 BASHRCD="${HOME}/.bashrc.d"
+BASHRCD="${HOME}/.config/bashrc.d"
 if [[ -d "${BASHRCD}" ]]; then
    echo "sourcing: ${BASHRCD}"
    for file in ${BASHRCD}/* ; do
@@ -327,3 +328,4 @@ source_if_exists "$BASH_IT"/bash_it.sh
 
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+eval "$(/home/choman/.local/bin/mise activate bash)"
