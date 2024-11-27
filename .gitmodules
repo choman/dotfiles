@@ -16,3 +16,6 @@
 [submodule "repos/goto"]
 	path = repos/github/goto
 	url = https://github.com/iridakos/goto
+[submodule "/home/choman/.config/tmux/plugins/tpm"]
+	path = /home/choman/.config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
