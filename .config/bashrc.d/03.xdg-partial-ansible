@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+export ANSIBLE_HOME="${XDG_DATA_HOME}/ansible"
+export ANSIBLE_HOME__PRE_XDG="${HOME}/.ansible"
+
+
+[[ ! -d "${ANSIBLE_HOME}" && -d "${ANSIBLE_HOME__PRE_XDG}" ]] && mv "${ANSIBLE_HOME__PRE_XDG}" "${ANSIBLE_HOME}"
+
+[[ ! -d "${ANSIBLE_HOME}" ]] && mkdir -p -m 700 "${ANSIBLE_HOME}"
+
