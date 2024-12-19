@@ -1,21 +1,27 @@
-[submodule "bashmarks"]
-	path = repos/github/bashmarks
-	url = https://github.com/huyng/bashmarks
+##[submodule "bashmarks"]
+##	path = repos/github/bashmarks
+##	url = https://github.com/huyng/bashmarks
 [submodule "bash-git-prompt"]
 	path = repos/github/bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt
 [submodule ".git-open"]
 	path = .git-open
 	url = https://github.com/paulirish/git-open.git
-[submodule "goto"]
-	path = goto
-	url = https://github.com/iridakos/goto
-[submodule "/home/choman/.tmux/plugins/tpm"]
-	path = /home/choman/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-[submodule "repos/goto"]
+##[submodule "goto"]
+##	path = goto
+##	url = https://github.com/iridakos/goto
+##[submodule "/home/choman/.tmux/plugins/tpm"]
+##	path = /home/choman/.tmux/plugins/tpm
+##	url = https://github.com/tmux-plugins/tpm
+[submodule "bash-bookmarks-goto"]
 	path = repos/github/goto
 	url = https://github.com/iridakos/goto
-[submodule "/home/choman/.config/tmux/plugins/tpm"]
+[submodule "tmux-tpm"]
 	path = /home/choman/.config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+##[submodule "xdg-ninja"]
+##	path = repos/github/xdg-ninja
+##	url = https://github.com/b3nj5m1n/xdg-ninja
+[submodule "repos/github/xdg-ninja"]
+	path = repos/github/xdg-ninja
+	url = https://github.com/b3nj5m1n/xdg-ninja
