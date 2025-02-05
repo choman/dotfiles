@@ -1,72 +1,81 @@
 #!/usr/bin/env bash
 
+# Variables
 AM_VM=false
-DISTRO="ubuntu"
+ARIA2C_EXTRA_FLAGS="--allow-overwrite=true --auto-file-renaming=false"
 BASH_COMPLETION_HOME="${HOME}/.config/bash_completion.d"
 BIN_DIR="${HOME}/bin"
+LOCAL_BIN_DIR="${HOME}/.local/bin"
+DEBUG=true
+DISTRO="ubuntu"
 
+# Variables Arrays
 DIRS=(
-    "$HOME/.bash_completion.d"
-    ${BASH_COMPLETION_HOME}
-    "$HOME/.config/bin"
-    "$HOME/.local/share/bin"
-    "$BIN_DIR"
-  )
+   "$HOME/.bash_completion.d"
+   ${BASH_COMPLETION_HOME}
+   ${LOCAL_BIN_DIR}
+   "$HOME/.config/bin"
+   "$HOME/.local/share/bin"
+   "$BIN_DIR"
+)
 
 check_vm()
 {
-    echo "Checking if I am a VM - via systemd-detect-virt"
-    if systemd-detect-virt; then
-        AM_VM=true
-    fi
+   echo "Checking if I am a VM - via systemd-detect-virt"
+   if systemd-detect-virt -q; then
+      AM_VM=true
+   fi
 }
 
 function get_yadm_version
 {
-    yadm_version=$(yadm version | awk '{print $2}') 
+   yadm_version=$(yadm version | grep "yadm version" | awk '{print $3}') 
 }
 
 function get_bash_version
 {
-    yadm_version=$(yadm version | awk '{print $2}')
+   bash_version=$(yadm version | grep "bash version" | awk '{print $3}')
 }
 
-function determineDownloadCommand
+function determine_download_command
 {
    declare -A DCS
    DCS['aria2c']="-x 8"
    DCS['wget']=""
 
+   echo "Determinnig download command"
    for dc in ${!DCS[@]};
    do
+      if $DEBUG; then
+          echo "  - checking $dc"
+      fi
       which $dc > /dev/null 
-      if [ $? -eq 0 ]; then
+      if [[ $? -eq 0 ]]; then
          DOWNLOAD="$dc ${DCS[$dc]}"
          break 
       fi
    done
-   
-
 }
 
 # need soething better
-function determineDistro
+function determine_distro
 {
-  if [ -f "/etc/os-release" ]
+  if [[ -f "/etc/os-release" ]]
   then
-    DISTRO=$(grep "^ID=" /etc/os-release | awk -F= '{print $2}')
-  echo $DISTRO
+    source /etc/os-release
+    DISTRO=$ID
+    echo "\${DISTRO} = ${DISTRO}"
   else
     UNAME=$(uname | tr "[A-Z]" "[a-z]")
     # If Linux, try to determine specific distribution
-    if [ "$UNAME" == "linux" ]; then
+    if [[ "$UNAME" == "linux" ]]; then
         # If available, use LSB to identify distribution
-        if [ -f "/etc/lsb-release" -o -d "/etc/lsb-release.d" ]; then
-            export DISTRO=$(lsb_release -i | cut -d: -f2 | sed s/'^\t'// | tr "[A-Z]" "[a-z]")
-        # Otherwise, use release info file
-        else
+##        if [[ -f "/etc/lsb-release" -o -d "/etc/lsb-release.d" ]]; then
+##            export DISTRO=$(lsb_release -i | cut -d: -f2 | sed s/'^\t'// | tr "[A-Z]" "[a-z]")
+##        # Otherwise, use release info file
+##        else
             export DISTRO=$(ls -d /etc/[A-Za-z]*[_-][rv]e[lr]* | grep -v "lsb" | cut -d'/' -f3 | cut -d'-' -f1 | cut -d'_' -f1)
-        fi
+##        fi
     fi
   fi
 
@@ -76,47 +85,55 @@ function determineDistro
    yadm config local.class $DISTRO
 }
 
-function setup_homedir
+function setup_home_dir
 {
-    for dir in ${DIRS[@]}; do
-        echo "Checking existence: ${dir}"
-        if [ ! -d "${dir}" ]; then
-            mkdir -pv ${dir}
-        fi
-    done
+   echo "Setting up home directory"
+   for dir in ${DIRS[@]}; do
+      echo "  - Checking existence: ${dir}"
+      [[ ! -d "${dir}" ]] && mkdir -pv "${dir}"
+   done
 }
 
 function setup_macfun
 {
-    # setup classes
-    declare -A class
+   echo "Setting up known macs"
+   declare -A class
 
-    class["70:85:c2:06:09:a6"]="vboxvdi"
-    class["08:00:27:17:b9:94"]="funstuff"
+   class["70:85:c2:06:09:a6"]="vboxvdi"
+   class["08:00:27:17:b9:94"]="funstuff"
 }
 
 function install_yadm_completions
 {
-   if [ $? -eq 0 ]; then
-      DC="aria2c -x 8"
-   else
-      DC="wget"
-   fi
-
-  $DOWNLOAD -d ${BASH_COMPLETION_HOME} -o  yadm \
-           https://raw.githubusercontent.com/TheLocehiliosan/yadm/bash-completion/bash-completion.sh
+  # assuming aria2c - --allow-overwrite=true --auto-file-renaming=false
+  $DOWNLOAD ${ARIA2C_EXTRA_FLAGS} -d ${BASH_COMPLETION_HOME} -o yadm \
+      https://raw.githubusercontent.com/yadm-dev/yadm/refs/heads/develop/completion/bash/yadm
+  source ${BASH_COMPLETION_HOME}/yadm
 }
 
 function install_vbox_completions
 {
-   ${DOWNLOAD} -d ${BASH_COMPLETION_HOME} -o vboxmanage \
-       https://raw.githubusercontent.com/tfmalt/bash-completion-virtualbox/master/vboxmanage_completion.bash
+  # assuming aria2c - --allow-overwrite=true --auto-file-renaming=false
+  ${DOWNLOAD} ${ARIA2C_EXTRA_FLAGS} -d ${BASH_COMPLETION_HOME} -o vboxmanage \
+      https://raw.githubusercontent.com/tfmalt/bash-completion-virtualbox/master/vboxmanage_completion.bash
+
+  source ${BASH_COMPLETION_HOME}/vboxmanage
 }
 
 function install_homebrew
 {
    sudo apt install -y build-essential procps curl file git
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+function print_debug01
+{
+   if $DEBUG; then
+      echo "print_debug01"
+      echo "  - \$DISTRO        = $DISTRO"
+      echo "  - \$DOWNLOAD      = $DOWNLOAD"
+      echo "  - \$yadm_version  = $yadm_version"
+   fi
 }
 
 # Deprecated
@@ -127,10 +144,11 @@ function install_homebrew
 
 
 check_vm
-determineDistro
-determineDownloadCommand
+determine_distro
+determine_download_command
 get_yadm_version
-setup_homedir
+print_debug01
+setup_home_dir
 setup_macfun
 
 # Go home
@@ -148,7 +166,7 @@ install_homebrew
 
 # Install/Update yadm submodules
 yadm submodule update --init --remote
-(cd bashmarks; make install)
+##(cd bashmarks; make install)
 
 
 ##echo "${!class[@]}"
@@ -164,8 +182,8 @@ done
 
 CLASS=$(yadm config local.class)
 
-echo "Installing teleconsole"
-curl https://www.teleconsole.com/get.sh | sudo sh
+##echo "Installing teleconsole"
+##curl https://www.teleconsole.com/get.sh | sudo sh
 
 ###
 ### Disabled: should also check against rhel based
@@ -212,6 +230,6 @@ curl https://www.teleconsole.com/get.sh | sudo sh
 
 
 # AppImages
-$DOWNLOAD -d ${HOME}/bin https://freeter.io/download/Freeter.AppImage
-chmod +x ${BIN_DIR}/Freeter.AppImage
+$DOWNLOAD ${ARIA2C_EXTRA_FLAGS} -d ${LOCAL_BIN_DIR} https://freeter.io/download/Freeter.AppImage
+chmod +x ${LOCAL_BIN_DIR}/Freeter.AppImage
 
