@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-AMIVM=false
+AM_VM=false
 DISTRO="ubuntu"
 BASH_COMPLETION_HOME="${HOME}/.config/bash_completion.d"
 BIN_DIR="${HOME}/bin"
@@ -13,11 +13,11 @@ DIRS=(
     "$BIN_DIR"
   )
 
-checkvm()
+check_vm()
 {
-    echo "Checking if I am a VM - not virt-what"
-    if ! systemd-detect-virt; then
-        AMIVM=true
+    echo "Checking if I am a VM - via systemd-detect-virt"
+    if systemd-detect-virt; then
+        AM_VM=true
     fi
 }
 
@@ -126,7 +126,7 @@ function install_homebrew
 ##}
 
 
-checkvm
+check_vm
 determineDistro
 determineDownloadCommand
 get_yadm_version
@@ -167,27 +167,29 @@ CLASS=$(yadm config local.class)
 echo "Installing teleconsole"
 curl https://www.teleconsole.com/get.sh | sudo sh
 
-if [ $CLASS = "dcw" ]; then
-   cd /tmp
-   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-   sudo yum localinstall -y /tmp/epel-release-latest-7.noarch.rpm
-
-   sudo yum install -y tmux meld
-
-   exit
-fi
+###
+### Disabled: should also check against rhel based
+### Disabled: Don't need anymore???
+##if [ $CLASS = "dcw" ]; then
+##   cd /tmp
+##   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+##   sudo yum localinstall -y /tmp/epel-release-latest-7.noarch.rpm
+##
+##   sudo yum install -y tmux meld
+##
+##   exit
+##fi
 
 #config_ubuntu_desktop
 # gsettings list-recursively
 # update some more system settings
-gsettings set com.canonical.indicator.datetime show-day true
-gsettings set com.canonical.indicator.datetime show-date true
-gsettings set com.canonical.Unity integrated-menus true
-gsettings set org.gnome.desktop.interface locate-pointer true
-
+###gsettings set com.canonical.indicator.datetime show-day true
+###gsettings set com.canonical.indicator.datetime show-date true
+###gsettings set com.canonical.Unity integrated-menus true
+###gsettings set org.gnome.desktop.interface locate-pointer true
 
 # gnome 17.10
-gsettings set org.gnome.desktop.interface clock-show-date true
+##gsettings set org.gnome.desktop.interface clock-show-date true
 
 
 # dconf watch /
@@ -196,7 +198,7 @@ gsettings set org.gnome.desktop.interface clock-show-date true
 ##dconf write /com/canonical/indicator/keyboard/visible false
 
 # really not a vm then do stuff on physical system
-###if ! $AMIVM; then
+###if ! $AM_VM; then
 ###   dconf write /org/compiz/profiles/unity-lowgfx/plugins/unityshell/launcher-hide-mode 1
 ###fi
 
