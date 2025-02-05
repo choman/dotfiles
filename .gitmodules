@@ -16,9 +16,9 @@
 [submodule "bash-bookmarks-goto"]
 	path = repos/github/goto
 	url = https://github.com/iridakos/goto
-[submodule "tmux-tpm"]
-	path = /home/choman/.config/tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+##[submodule "tmux-tpm"]
+##	path = /home/choman/.config/tmux/plugins/tpm
+##	url = https://github.com/tmux-plugins/tpm
 ##[submodule "xdg-ninja"]
 ##	path = repos/github/xdg-ninja
 ##	url = https://github.com/b3nj5m1n/xdg-ninja
