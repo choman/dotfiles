@@ -208,6 +208,9 @@ CLASS=$(yadm config local.class)
 
 # gnome 17.10
 ##gsettings set org.gnome.desktop.interface clock-show-date true
+#
+${HOME}/.local/bin/gnome_clock_settings.sh
+${HOME}/.local/bin/gnome_dock_settings.sh
 
 
 # dconf watch /
