@@ -3,10 +3,11 @@
 #
 #
 #
-DOCK_FIXED=false
 DOCK_AUTOHIDE=true
-DOCK_INTELLIHIDE=true
+DOCK_EXTEND_HEIGHT=false # panel mode
+DOCK_FIXED=false
 DOCK_ICON_SIZE=38
+DOCK_INTELLIHIDE=true
 UBIN=/usr/bin
 
 echo "Detecting physical/virtual system - via systemd-detect-virt"
@@ -20,3 +21,4 @@ ${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed $DOCK_F
 ${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock autohide $DOCK_AUTOHIDE
 ## ${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock intellihide $DOCK_INTELLIHIDE
 ${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size $DOCK_ICON_SIZE
+${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock extend-height $DOCK_EXTEND_HEIGHT
