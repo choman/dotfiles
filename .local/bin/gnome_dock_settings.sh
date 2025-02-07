@@ -17,6 +17,6 @@ if systemd-detect-virt -q; then
 fi
 
 ${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed $DOCK_FIXED
-${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock audtohide $DOCK_AUTOHIDE
+${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock autohide $DOCK_AUTOHIDE
 ## ${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock intellihide $DOCK_INTELLIHIDE
 ${UBIN}/gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size $DOCK_ICON_SIZE
