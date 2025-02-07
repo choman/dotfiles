@@ -10,7 +10,8 @@ DOCK_ICON_SIZE=38
 DOCK_INTELLIHIDE=true
 UBIN=/usr/bin
 
-echo "Detecting physical/virtual system - via systemd-detect-virt"
+echo "Setting dock-to-dash settings"
+echo "  - Detecting physical/virtual system - via systemd-detect-virt"
 if systemd-detect-virt -q; then
    echo "  - virtual"
    DOCK_AUTOHIDE=false
