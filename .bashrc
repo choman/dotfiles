@@ -48,7 +48,18 @@ HISTFILESIZE=2000
 ############################################
 source_if_exists() {
    file2source=$1
-   [[ -f "${file2source}" ]] && source "${file2source}" || printf "${RED}ERROR${NC}: File not found: ${file2source}\n"
+   if [[ ! -f "${file2source}" ]]; then
+       printf "${RED}ERROR${NC}: File not found: ${file2source}\n"
+   fi
+
+   source "${file2source}"
+   rval=$?
+
+   if [[ $rval -gt 0 ]]; then
+       printf "${RED}error${NC}\n"
+   else
+       printf "${GREEN}success${NC}\n"
+   fi
 }
 
 source_directory() {
