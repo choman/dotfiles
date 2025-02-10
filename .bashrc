@@ -51,6 +51,26 @@ source_if_exists() {
    [[ -f "${file2source}" ]] && source "${file2source}" || printf "${RED}ERROR${NC}: File not found: ${file2source}\n"
 }
 
+source_directory() {
+   directory=$1
+   test_exec=${2:-false}
+
+   if [[ -d "${directory}" ]]; then
+      echo "sourcing: ${directory}"
+      for file in ${directory}/* ; do
+         if [[ "${file##*/}" != "bashrc.init" ]]; then
+#            test -f "$file" || continue
+            if $test_exec; then
+                test -x "$file" || continue
+	    fi
+            echo " - ${file}"
+            source_if_exists "${file}"
+         fi
+      done
+      unset file
+   fi
+}
+
 ############################################
 #    XDG_CONFIG
 ############################################
@@ -220,30 +240,32 @@ fi
 # XDG-Support
 # This churns through files in $HOME/.config/bashrc.d if they are executable.
 BASHRCD="${HOME}/.config/bashrc.d"
-if [[ -d "${BASHRCD}" ]]; then
-   echo "sourcing: ${BASHRCD}"
-   for file in ${BASHRCD}/* ; do
-      if [[ "${file##*/}" != "bashrc.init" ]]; then
-         test -f "$file" || continue
-         test -x "$file" || continue
-	 echo " - ${file}"
-	 source_if_exists "${file}"
-      fi
-   done
-   unset file
-fi
+source_directory $BASHRCD true
+#if [[ -d "${BASHRCD}" ]]; then
+#   echo "sourcing: ${BASHRCD}"
+#   for file in ${BASHRCD}/* ; do
+#      if [[ "${file##*/}" != "bashrc.init" ]]; then
+#         test -f "$file" || continue
+#         test -x "$file" || continue
+#	 echo " - ${file}"
+#	 source_if_exists "${file}"
+#      fi
+#   done
+#   unset file
+#fi
 
 # XDG-Support
 BASH_COMPLETIONS="${HOME}/.config/bash_completion.d"
-if [[ -d "${BASH_COMPLETIONS}" ]]; then
-   echo "Sourcing completions: ${BASH_COMPLETIONS}"
-   for file in $(ls ${BASH_COMPLETIONS})
-   do 
-       source_if_exists "${BASH_COMPLETIONS}/${file}"
-       printf " - Sourcing ${file} ${GREEN}success${NC}\n"
-   done
-   unset file
-fi
+source_directory $BASH_COMPLETIONS
+#if [[ -d "${BASH_COMPLETIONS}" ]]; then
+#   echo "Sourcing completions: ${BASH_COMPLETIONS}"
+#   for file in $(ls ${BASH_COMPLETIONS})
+#   do 
+#       source_if_exists "${BASH_COMPLETIONS}/${file}"
+#       printf " - Sourcing ${file} ${GREEN}success${NC}\n"
+#   done
+#   unset file
+#fi
 
 source_if_exists "$HOME/.config/cargo/env"
 
