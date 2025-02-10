@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source functions
+#source functions
 
 install_starship() {
     curl -sS https://starship.rs/install.sh | sh
