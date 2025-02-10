@@ -11,7 +11,6 @@ DISTRO="ubuntu"
 
 # Variables Arrays
 DIRS=(
-   "$HOME/.bash_completion.d"
    ${BASH_COMPLETION_HOME}
    ${LOCAL_BIN_DIR}
    "$HOME/.config/bin"
