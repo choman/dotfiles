@@ -1,1 +1,0 @@
-.config/yadm/bootstrap.d/01_gnome_clock_settings.sh

@@ -1,1 +1,0 @@
-.config/yadm/bootstrap.d/01_gnome_dock_settings.sh
