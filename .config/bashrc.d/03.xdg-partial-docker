@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Docker XDG Internally Disabled"
+echo "    *INFO* Docker XDG Internally Disabled"
 ##export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
