@@ -6,4 +6,6 @@ install_gopass() {
 }
 
 echo "Setting up gopass completions"
-[[ -x "$(which gopass)" ]] && eval "$(gopass completion bash)"
+if [[ -x "$(which gopass)" ]]; then
+   eval "$(gopass completion bash)"
+fi
