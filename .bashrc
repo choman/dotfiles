@@ -236,6 +236,7 @@ fi
 # XDG-Support
 BASH_COMPLETIONS="${HOME}/.config/bash_completion.d"
 if [[ -d "${BASH_COMPLETIONS}" ]]; then
+   echo "Sourcing completions: ${BASH_COMPLETIONS}"
    for file in $(ls ${BASH_COMPLETIONS})
    do 
        source_if_exists "${BASH_COMPLETIONS}/${file}"
