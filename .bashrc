@@ -158,10 +158,8 @@ source_if_exists "${HOME}/byobu/prompt"
 [[ -d "${HOME}/cargo/bin" ]]  && PATH="$PATH:${HOME}/cargo/bin"
 [[ -d "${HOME}/local/bin" ]]  && PATH="$PATH:${HOME}/local/bin"
 
-if [[ ! -d "$HOME/repos/goto" ]]; then 
-    source ~/.local/bin/bashmarks.sh
-    source ~/bashmarks/bashmarks.sh
-else
+# No more baskmarks
+if [[ -d "$HOME/repos/goto" ]]; then 
     echo "sourcing goto.sh"
     source ~/repos/goto/goto.sh
 fi
@@ -219,8 +217,8 @@ fi
 #[[ -x "$(which pipenv)" ]] && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
 #[[ -x "$(which pipenv)" ]] && eval "$(pipenv --completions)"
 
-# This churns through files in $HOME/.bashrc.d if they are executable.
-BASHRCD="${HOME}/.bashrc.d"
+# XDG-Support
+# This churns through files in $HOME/.config/bashrc.d if they are executable.
 BASHRCD="${HOME}/.config/bashrc.d"
 if [[ -d "${BASHRCD}" ]]; then
    echo "sourcing: ${BASHRCD}"
@@ -235,7 +233,8 @@ if [[ -d "${BASHRCD}" ]]; then
    unset file
 fi
 
-BASH_COMPLETIONS="${HOME}/.bash_completion.d"
+# XDG-Support
+BASH_COMPLETIONS="${HOME}/.config/bash_completion.d"
 if [[ -d "${BASH_COMPLETIONS}" ]]; then
    for file in $(ls ${BASH_COMPLETIONS})
    do 
