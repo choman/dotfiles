@@ -18,7 +18,7 @@ if [[ -f "$HOME/.config/work" ]]; then
    yadm config local.class work
 fi
 
-class="$("${HOME}/.local/bin/get_system_type.sh")"
+class="$(${HOME}/.local/bin/get_system_type.sh)"
 yadm config local.class ${class}
 
 # append to the history file, don't overwrite it
