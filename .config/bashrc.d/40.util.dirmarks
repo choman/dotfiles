@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GOTO_FILE="${HOME}/repos/goto/goto.sh"
+GOTO_FILE="${HOME}/repos/github/goto/goto.sh"
 
 source_if_exists "${GOTO_FILE}"
 
