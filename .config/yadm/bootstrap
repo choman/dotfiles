@@ -137,6 +137,12 @@ function print_debug01
    fi
 }
 
+function update_submodules
+{
+   cd $HOME
+   yadm submodule update --recursive --init
+}
+
 # Deprecated
 ##function install_linuxbrew
 ##{
@@ -151,6 +157,7 @@ get_yadm_version
 print_debug01
 setup_home_dir
 setup_macfun
+update_submodules
 
 # Go home
 cd "$HOME" || echo "can't go to: $HOME"
