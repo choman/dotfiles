@@ -74,7 +74,7 @@ source_directory() {
             if $test_exec; then
                 test -x "$file" || continue
 	    fi
-            printf " - ${file} "
+	    printf " - $(basename ${file}) "
             source_if_exists "${file}"
          fi
       done
