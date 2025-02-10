@@ -65,6 +65,7 @@ source_directory() {
 	    fi
             echo " - ${file}"
             source_if_exists "${file}"
+            printf " - Sourcing ${file} ${GREEN}success${NC}\n"
          fi
       done
       unset file
