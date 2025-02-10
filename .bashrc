@@ -240,7 +240,7 @@ fi
 # XDG-Support
 # This churns through files in $HOME/.config/bashrc.d if they are executable.
 BASHRCD="${HOME}/.config/bashrc.d"
-source_directory $BASHRCD true
+source_directory "${BASHRCD}" true
 #if [[ -d "${BASHRCD}" ]]; then
 #   echo "sourcing: ${BASHRCD}"
 #   for file in ${BASHRCD}/* ; do
@@ -256,7 +256,7 @@ source_directory $BASHRCD true
 
 # XDG-Support
 BASH_COMPLETIONS="${HOME}/.config/bash_completion.d"
-source_directory $BASH_COMPLETIONS
+source_directory "${BASH_COMPLETIONS}"
 #if [[ -d "${BASH_COMPLETIONS}" ]]; then
 #   echo "Sourcing completions: ${BASH_COMPLETIONS}"
 #   for file in $(ls ${BASH_COMPLETIONS})
