@@ -25,6 +25,7 @@ check_vm()
    if systemd-detect-virt -q; then
       AM_VM=true
    fi
+   echo "  - AM_VM => ${AM_VM}"
 }
 
 function get_yadm_version
