@@ -48,6 +48,7 @@ HISTFILESIZE=2000
 ############################################
 source_if_exists() {
    file2source=$1
+   echo "file2source = $file2source"
    [[ -f "${file2source}" ]] && source "${file2source}" || printf "${RED}ERROR${NC}: File not found: ${file2source}\n"
 }
 
