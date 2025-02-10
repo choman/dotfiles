@@ -3,4 +3,6 @@
 XDG_NINJA_SCRIPT="${HOME}/repos/github/xdg-ninja/xdg-ninja.sh"
 
 
-[[ -x "${XDG_NINJA_SCRIPT}" ]] && echo "FOOUND" && alias xdg-ninja="${XDG_NINJA_SCRIPT}"
+if [[ -x "${XDG_NINJA_SCRIPT}" ]]; then 
+   alias xdg-ninja="${XDG_NINJA_SCRIPT}"
+fi
