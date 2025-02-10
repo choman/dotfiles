@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo "hello $1"
+echo "hello there $1"
 
 exit 0
