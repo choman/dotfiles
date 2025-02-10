@@ -48,6 +48,8 @@ HISTFILESIZE=2000
 ############################################
 source_if_exists() {
    file2source=$1
+   verbose=${2:-true}
+
    if [[ ! -f "${file2source}" ]]; then
        printf "${RED}ERROR${NC}: File not found: ${file2source}\n"
    fi
@@ -55,10 +57,12 @@ source_if_exists() {
    source "${file2source}"
    rval=$?
 
-   if [[ $rval -gt 0 ]]; then
-       printf "${RED}error${NC}\n"
-   else
-       printf "${GREEN}success${NC}\n"
+   if $verbose; then
+      if [[ $rval -gt 0 ]]; then
+          printf "${RED}error${NC}\n"
+      else
+          printf "${GREEN}success${NC}\n"
+      fi
    fi
 }
 

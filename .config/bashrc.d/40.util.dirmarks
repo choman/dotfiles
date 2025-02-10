@@ -2,7 +2,7 @@
 
 GOTO_FILE="${HOME}/repos/github/goto/goto.sh"
 
-source_if_exists "${GOTO_FILE}"
+source_if_exists "${GOTO_FILE}" false
 
 alias g="goto"
 
