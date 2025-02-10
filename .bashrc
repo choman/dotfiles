@@ -71,6 +71,7 @@ source_directory() {
    test_exec=${2:-false}
 
    if [[ -d "${directory}" ]]; then
+      echo 
       echo "sourcing: ${directory}"
       for file in ${directory}/* ; do
          if [[ "${file##*/}" != "bashrc.init" ]]; then
