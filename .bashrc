@@ -74,9 +74,8 @@ source_directory() {
             if $test_exec; then
                 test -x "$file" || continue
 	    fi
-            echo " - ${file}"
+            printf " - ${file} "
             source_if_exists "${file}"
-            printf " - Sourcing ${file} ${GREEN}success${NC}\n"
          fi
       done
       unset file
