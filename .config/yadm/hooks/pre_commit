@@ -2,4 +2,7 @@
 
 echo "hello there $1"
 
+
+shellcheck
+
 exit 0
