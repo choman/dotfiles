@@ -26,6 +26,10 @@ function get_system_type
 {
    #system_type="${IP_MAP["${external_ip}"]:-"Unknown System (Public IP: $external_ip)"}"
    system_type="${IP_MAP["${external_ip}"]:-"unknown"}"
+  
+   if [[ -f "${HOME}/.config/work" ]]; then
+      system_type="work"
+   fi
 
    if $DEBUG; then
       if [[ "${system_type}" = "unknown" ]]; then
@@ -34,6 +38,7 @@ function get_system_type
         echo "System Type: ${system_type}"
       fi
    fi
+
 
    echo "${system_type}"
 }
