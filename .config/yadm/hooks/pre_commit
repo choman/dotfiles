@@ -1,8 +1,30 @@
 #!/usr/bin/env bash
 
-echo "hello there $1"
+# Files to process
+shell_files=$(git diff --cached --name-only --diff-filter=d | grep -E '\.sh$')
+code_files=$(git diff --cached --name-only --diff-filter=d | grep -E '\.(js|ts|json|css|md|html)$')
+
+SHELLCHECK=false
+PRETTIER=false
+SHFMT=false
+
+function requirements
+{
+  [[ -x "$(which shellcheck)" ]] && SHELLCHECK=true
+  [[ -x "$(which shfmt)" ]] && SHFMT=true
+  [[ -x "$(which prettier)" ]] && PRETTIER=true
+}
 
 
-shellcheck
+
+requirements
+
+echo SHELLCHECK = $SHELLCHECK
+echo SHFMT = $SHFMT
+echo PRETTIER = $PRETTIER
+
+echo $shell_files
+echo $code_files
+
 
 exit 0
