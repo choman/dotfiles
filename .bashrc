@@ -194,10 +194,10 @@ source_if_exists "${HOME}/byobu/prompt"
 [[ -d "${HOME}/local/bin" ]]  && PATH="$PATH:${HOME}/local/bin"
 
 # No more baskmarks
-if [[ -d "$HOME/repos/goto" ]]; then 
-    echo "sourcing goto.sh"
-    source ~/repos/goto/goto.sh
-fi
+##if [[ -d "$HOME/repos/goto" ]]; then 
+##    echo "sourcing goto.sh"
+##    source ~/repos/goto/goto.sh
+##fi
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
