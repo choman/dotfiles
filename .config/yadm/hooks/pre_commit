@@ -28,8 +28,8 @@ echo SHELLCHECK = $SHELLCHECK
 echo SHFMT = $SHFMT
 echo PRETTIER = $PRETTIER
 
-echo $shell_files
-echo $code_files
+echo shell_files = $shell_files
+echo code_files = $code_files
 
 
 exit 0
