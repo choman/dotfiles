@@ -66,6 +66,7 @@ source_if_exists() {
    fi
 }
 
+# TEST
 source_directory() {
    directory=$1
    test_exec=${2:-false}
