@@ -13,12 +13,12 @@ esac
 HISTCONTROL=ignoreboth
 
 
-if [[ -f "$HOME/.config/work" ]]; then
-   echo "setting yadm class"
-   yadm config local.class work
-fi
+##if [[ -f "$HOME/.config/work" ]]; then
+##   echo "setting yadm class"
+##   yadm config local.class work
+##fi
 
-class="$(${HOME}/.local/bin/get_system_type.sh)"
+class="$("${HOME}/.local/bin/get_system_type.sh")"
 yadm config local.class ${class}
 
 # append to the history file, don't overwrite it
