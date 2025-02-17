@@ -1,0 +1,120 @@
+layout_poetry() {
+  if [[ ! -f pyproject.toml ]]; then
+    log_status 'No pyproject.toml found. Will initialize poetry in no-interactive mode'
+    poetry init -n -q
+    poetry run pip install -U pip wheel setuptools
+  fi 
+
+  poetry run echo >> /dev/null
+  local VENV=$(dirname $(poetry run which python))
+  export VIRTUAL_ENV=$(echo "$VENV" | rev | cut -d'/' -f2- | rev)
+  export POETRY_ACTIVE=1
+  PATH_add "$VENV"
+  if [ ! -L .venv ]; then
+    ln -ns $VIRTUAL_ENV .venv
+  fi
+}
+
+use_ruby() {
+  local ruby_dir=$HOME/.rubies/$1
+  load_prefix $ruby_dir
+  layout ruby
+}
+
+
+# Example: export_alias zz "ls -la"
+export_alias() {
+  local name=$1
+   echo $name
+   echo $PWD
+  shift
+  local alias_dir=$PWD/.direnv/aliases
+  local target="$alias_dir/$name"
+  mkdir -p "$alias_dir"
+  PATH_add "$alias_dir"
+  echo "#!/usr/bin/env bash" > "$target"
+  echo -e "$@" >> "$target"
+  chmod +x "$target"
+}
+
+export_function() {
+  local name=$1
+  local alias_dir=$PWD/.direnv/aliases
+  echo \$name = $name
+  mkdir -p "$alias_dir"
+  PATH_add "$alias_dir"
+  local target="$alias_dir/$name"
+  if declare -f "$name" >/dev/null; then
+    echo "#!$SHELL" > "$target"
+    declare -f "$name" >> "$target" 2>/dev/null
+    # Notice that we add shell variables to the function trigger.
+    echo "$name \$*" >> "$target"
+    chmod +x "$target"
+  fi
+}
+
+export REPO_BASE=$(git rev-parse --show-toplevel)
+
+
+if [[ ! -d "/home/choman/repos/caci/speedofme" ]]; then
+    export JIRA_API_TOKEN=$(gopass show -o oadcgs/platform1/JIRA_API_TOKEN)
+
+
+    export RHEL_SUBSCRIPTION_USER=C-Homan-DCW
+    export RHEL_SUBSCRIPTION_PASSWORD=$(gopass show oadcgs/rhel/${RHEL_SUBSCRIPTION_USER})
+    export DI2E_USER=chad.homan
+    export DI2E_PASSWORD=$(gopass show di2e/chad.homan)
+    export NEXUS3_USERNAME=chad.homan
+    export NEXUS3_PASSWORD=$(gopass show di2e/chad.homan)
+    export NEXUS3_URL=https://nexus.di2e.net/nexus3
+    export NEXUS3_LOGIN_URL=https://nexus.di2e.net/nexus3
+    export NEXUS3_LOGIN_USERNAME=chad.homan
+    export NEXUS3_LOGIN_PASSWORD=$(gopass show di2e/chad.homan)
+    export REPOSITORY_USER=chad.homan
+    export REPOSITORY_PASSWORD=$(gopass show di2e/chad.homan)
+    export REPOSITORY_URL=https://nexus.di2e.net/nexus3
+    export OS_FACTORY_BOOT_WAIT=10s
+    export ENVRC_CACHE="$(git rev-parse --show-toplevel)/.envrc.cache"
+fi 
+
+# SSL CERT FILE Variables
+export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+export NODE_EXTRA_CA_CERTS="${SSL_CERT_FILE}"
+export REQUESTS_CA_BUNDLE="${SSL_CERT_FILE}"
+
+# Watch gopass stores
+GOPASS_STORES=$(find ~/.local/share/gopass/stores/* -name "*.gpg")
+watch_file ${GOPASS_STORES}
+
+if [[ -f "${REPO_BASE}/bin" ]]; then
+   PATH_add ${REPO_BASE}/bin
+fi
+
+PATH_add .
+
+# ODIN Section for AWS Keys
+if [[ "$(pwd)" =~ "${HOME}/repos/odin/vi2e" ]]; then
+   echo "*********************************************"
+   if [[ -z "${AWS_SECRET_ACCESS_KEY}" ]]; then
+       echo "* Missing environment variable: AWS_SECRET_ACCESS_KEY"
+       export AWS_SECRET_ACCESS_KEY=None
+   fi
+   if [[ -z "${AWS_ACCESS_KEY_ID}" ]]; then
+       echo "* Missing environment variable: AWS_ACCESS_KEY_ID"
+       export AWS_ACCESS_KEY_ID=None
+   fi
+   echo "*********************************************"
+fi
+
+#
+#
+# Can override SSLCERTS_HOME to point ot a central store 
+# or a different locatation such as $HOME/work
+#
+# override location: ~/.config/direnv/direnvrc
+#
+export SSLCERTS_HOME=${HOME}/work
+export SSLCERTS_HOME="${SSLCERTS_HOME:-$HOME}"
+export SSLCERTS_DIR="${SSLCERTS_HOME}/sslcerts"
+[[ -d ${REPO_BASE}/certs && -d "${SSLCERTS_DIR}" ]] && rsync -auk --exclude .gitkeep --delete-after ${SSLCERTS_DIR}/* ${REPO_BASE}/certs
+
