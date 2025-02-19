@@ -27,8 +27,8 @@ function get_system_type
    #system_type="${IP_MAP["${external_ip}"]:-"Unknown System (Public IP: $external_ip)"}"
    system_type="${IP_MAP["${external_ip}"]:-"unknown"}"
   
-   if [[ -f "${HOME}/.config/work" ]]; then
-      system_type="work"
+   if [[ "${system_type}" =~ ^(unkown|home) && -f "${HOME}/.config/work" ]]; then
+      system_type="homework"
    fi
 
    if $DEBUG; then
@@ -44,6 +44,11 @@ function get_system_type
 }
 
 external_ip="$(curl -s https://ifconfig.me)"
+
+if [[ "$1" == "show" ]]; then
+    echo $external_ip
+    exit 1
+fi
 read_ips
 get_system_type
 
