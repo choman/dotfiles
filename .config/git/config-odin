@@ -1,0 +1,6 @@
+[user]
+        signingkey = C15EB61EDEA88182
+        name = Chad Homan
+        email = chad.homan@caci.com
+[commit]
+        gpgsign = true
