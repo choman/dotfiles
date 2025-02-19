@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# TODO
+#  - better shell script vs config file suppport
+#  - detect other scripts (i.e. python)
+#  - other linter types
+#
+
 # Get staged files, ignoring deleted files
 staged_files=$(yadm diff --cached --name-only --diff-filter=d)
 
