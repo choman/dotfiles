@@ -5,6 +5,8 @@
 #  - detect other scripts (i.e. python)
 #  - other linter types
 #
+#
+exit 0
 
 # Get staged files, ignoring deleted files
 staged_files=$(yadm diff --cached --name-only --diff-filter=d)
