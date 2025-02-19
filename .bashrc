@@ -369,4 +369,3 @@ source_if_exists "$BASH_IT"/bash_it.sh
 
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
-eval "$(/home/choman/.local/bin/mise activate bash)"
