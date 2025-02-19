@@ -4,10 +4,9 @@ export ANSIBLE_HOME="${XDG_DATA_HOME}/ansible"
 export ANSIBLE_HOME__PRE_XDG="${HOME}/.ansible"
 
 if [[ ! -d "${ANSIBLE_HOME}" && -d "${ANSIBLE_HOME__PRE_XDG}" ]]; then
-   mv "${ANSIBLE_HOME__PRE_XDG}" "${ANSIBLE_HOME}"
+    mv "${ANSIBLE_HOME__PRE_XDG}" "${ANSIBLE_HOME}"
 fi
 
-if [[ ! -d "${ANSIBLE_HOME}" ]]; then 
-   mkdir -p -m 700 "${ANSIBLE_HOME}"
+if [[ ! -d "${ANSIBLE_HOME}" ]]; then
+    mkdir -p -m 700 "${ANSIBLE_HOME}"
 fi
-

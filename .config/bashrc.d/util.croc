@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 install_croc() {
-  curl https://getcroc.schollz.com | bash
+    curl https://getcroc.schollz.com | bash
 }

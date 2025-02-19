@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-
 install_jira() {
-   echo "Install/Update gojira"
+    echo "Install/Update gojira"
 }
 
 if [[ -x "$(which jira)" ]]; then

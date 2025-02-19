@@ -2,15 +2,14 @@
 
 install() {
 
-   case "$1" in
-      starship)
-         install_starship
-         ;;
-      *)
-          echo "Unknown installer"
-          ;;
-   esac
+    case "$1" in
+    starship)
+        install_starship
+        ;;
+    *)
+        echo "Unknown installer"
+        ;;
+    esac
 }
-
 
 echo "successfully sourced"

@@ -3,4 +3,3 @@
 if [[ -x "$(which aliases)" ]]; then
     eval "$(aliases init --global)"
 fi ## || echo "Command not found: aliases"
-

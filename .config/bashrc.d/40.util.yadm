@@ -4,4 +4,3 @@ YADM_COMPLETION="${HOME}/repos/yadm/completion/bash/yadm"
 # shellcheck disable=SC1090
 [[ -f "${YADM_COMPLETION}" ]] && source "${YADM_COMPLETION}"
 unset YADM_COMPLETION
-

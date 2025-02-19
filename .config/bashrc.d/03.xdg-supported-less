@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# less 
+# less
 mkdir -p "${XDG_CACHE_HOME}/less"
 export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"

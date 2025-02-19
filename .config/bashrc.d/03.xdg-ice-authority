@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
 export ICEAUTHORITY="${XDG_CACHE_HOME}/ICEauthority"
-

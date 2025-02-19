@@ -2,10 +2,9 @@
 
 AWS_HOME="${XDG_CONFIG_HOME}/aws"
 
-if [[ ! -d  "${AWS_HOME}" ]]; then 
+if [[ ! -d "${AWS_HOME}" ]]; then
     mkdir "${AWS_HOME}"
 fi
 
 export AWS_SHARED_CREDENTIALS_FILE="${AWS_HOME}/credentials"
 export AWS_CONFIG_FILE="${AWS_HOME}/config"
-

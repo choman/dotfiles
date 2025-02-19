@@ -2,5 +2,3 @@
 
 export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
 export ERRFILE="${XDG_CACHE_HOME}/X11/xsession-errors"
-
-
