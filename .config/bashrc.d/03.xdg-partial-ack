@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export ACKRC="${XDG_CONFIG_HOME}/ack/ackrc"
+
