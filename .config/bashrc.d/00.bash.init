@@ -10,13 +10,13 @@ export HISTIGNORE="&:bg:fg:ll:h"
 export HISTFILE="${XDG_DATA_HOME}/bash/history"
 
 ##ulimit -S -c 0          # Don't want any coredumps.
-set -o notify  # Get immediate notification of background job termination
+set -o notify # Get immediate notification of background job termination
 
-shopt -s cdspell  # Correct dir spellings
-shopt -q -s cmdhist  # Make multi-line commandsline in history
-shopt -s checkwinsize  # Make sure display get updated when terminal window get resized
+shopt -s cdspell      # Correct dir spellings
+shopt -q -s cmdhist   # Make multi-line commandsline in history
+shopt -s checkwinsize # Make sure display get updated when terminal window get resized
 shopt -s cmdhist
 shopt -s histappend histreedit histverify
-shopt -q -s extglob  # Turn on the extended pattern matching features
+shopt -q -s extglob # Turn on the extended pattern matching features
 
 #unset USERNAME

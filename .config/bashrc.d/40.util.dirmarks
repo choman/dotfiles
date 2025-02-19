@@ -7,4 +7,3 @@ source_if_exists "${GOTO_FILE}" false
 alias g="goto"
 
 unset GOTO_FILE
-

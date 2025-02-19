@@ -2,7 +2,6 @@
 
 XDG_NINJA_SCRIPT="${HOME}/repos/github/xdg-ninja/xdg-ninja.sh"
 
-
-if [[ -x "${XDG_NINJA_SCRIPT}" ]]; then 
-   alias xdg-ninja="${XDG_NINJA_SCRIPT}"
+if [[ -x "${XDG_NINJA_SCRIPT}" ]]; then
+    alias xdg-ninja="${XDG_NINJA_SCRIPT}"
 fi

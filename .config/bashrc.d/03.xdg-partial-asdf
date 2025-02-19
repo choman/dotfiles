@@ -2,4 +2,3 @@
 
 export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"
 mkdir -pv "${ASDF_DATA_DIR}"
-

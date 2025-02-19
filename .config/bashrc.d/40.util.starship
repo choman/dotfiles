@@ -6,6 +6,6 @@ install_starship() {
     curl -sS https://starship.rs/install.sh | sh
 }
 
-if [[ -x "$(which starship)" ]]; then 
-   eval "$(starship init bash)"
+if [[ -x "$(which starship)" ]]; then
+    eval "$(starship init bash)"
 fi

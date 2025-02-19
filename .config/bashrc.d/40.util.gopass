@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-
 install_gopass() {
-   echo "Installing/Updating gopass"
+    echo "Installing/Updating gopass"
 }
 
-echo "Setting up gopass completions" > /dev/null 2>&1
+echo "Setting up gopass completions" >/dev/null 2>&1
 if [[ -x "$(which gopass)" ]]; then
-   eval "$(gopass completion bash)"
+    eval "$(gopass completion bash)"
 fi

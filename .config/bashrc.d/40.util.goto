@@ -1,5 +1,3 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
-
-#if [[ -x ~/repos/github/goto/goto.sh ]]; then 
-
+#if [[ -x ~/repos/github/goto/goto.sh ]]; then

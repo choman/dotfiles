@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 
 setup_pyenv() {
-   ## Pyenv - follow xdg
-   if [[ -z "${PYENV_ROOT}" ]]; then
-       export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
-   fi 
+    ## Pyenv - follow xdg
+    if [[ -z "${PYENV_ROOT}" ]]; then
+        export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
+    fi
 
-   if [[ ! -d "${PYENV_ROOT}" ]]; then
-      echo "NOT Settting up pyenv"
-      unset PYENV_ROOT
-      return
-   fi
+    if [[ ! -d "${PYENV_ROOT}" ]]; then
+        echo "NOT Settting up pyenv"
+        unset PYENV_ROOT
+        return
+    fi
 
-   export PATH="${PYENV_ROOT}/bin:${PATH}"
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
 
-   if [[ -x "$(which pyenv)" ]]; then
-      echo "Settting up pyenv"
-      eval "$(pyenv init --path)"
-      eval "$(pyenv virtualenv-init -)"
-   fi
+    if [[ -x "$(which pyenv)" ]]; then
+        echo "Settting up pyenv"
+        eval "$(pyenv init --path)"
+        eval "$(pyenv virtualenv-init -)"
+    fi
 }
 
 setup_poetry() {
@@ -29,12 +29,10 @@ setup_poetry() {
 }
 
 install_poetry() {
-  poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
-  curl -sSL ${poetry_url} | python -
-  unset poetry_url
+    poetry_url="https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
+    curl -sSL ${poetry_url} | python -
+    unset poetry_url
 }
-
 
 setup_poetry
 setup_pyenv
-

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
 if [[ -x "$(which direnv)" ]]; then
-   eval "$(direnv hook bash)"
+    eval "$(direnv hook bash)"
 fi
-

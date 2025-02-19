@@ -4,5 +4,5 @@
 # -
 
 if [[ -x "$(which dstask)" ]]; then
-   source <(dstask bash-completion)
+    source <(dstask bash-completion)
 fi
