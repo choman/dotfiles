@@ -3,6 +3,7 @@
 # Get staged files, ignoring deleted files
 staged_files=$(yadm diff --cached --name-only --diff-filter=d)
 
+
 # Define file groups
 shell_files=$(echo "$staged_files" | grep -E '\.sh|(^|/)\..*rc$|\.bash|\.zsh')
 code_files=$(echo "$staged_files" | grep -E '\.(js|ts|json|css|md|yaml|yml|html)$')
@@ -32,6 +33,7 @@ echo SHELLCHECK = $SHELLCHECK
 echo SHFMT = $SHFMT
 echo PRETTIER = $PRETTIER
 
+echo staged_files = $staged_files
 echo shell_files = $shell_files
 echo code_files = $code_files
 
