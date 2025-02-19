@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Get staged files, ignoring deleted files
-staged_files=$(git diff --cached --name-only --diff-filter=d)
+staged_files=$(yadm diff --cached --name-only --diff-filter=d)
 
 # Define file groups
 shell_files=$(echo "$staged_files" | grep -E '\.sh|(^|/)\..*rc$|\.bash|\.zsh')
