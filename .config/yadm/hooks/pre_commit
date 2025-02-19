@@ -3,62 +3,69 @@
 # Get staged files, ignoring deleted files
 staged_files=$(yadm diff --cached --name-only --diff-filter=d)
 
-
 # Define file groups
 shell_files=$(echo "$staged_files" | grep -E '\.sh|(^|/)\..*rc$|\.bash|\.zsh')
 code_files=$(echo "$staged_files" | grep -E '\.(js|ts|json|css|md|yaml|yml|html)$')
-
 
 SHELLCHECK=false
 PRETTIER=false
 SHFMT=false
 
-function requirements
-{
-  [[ -x "$(which shellcheck)" ]] && SHELLCHECK=true
-  [[ -x "$(which shfmt)" ]] && SHFMT=true
-  [[ -x "$(which prettier)" ]] && PRETTIER=true
+function requirements {
+	[[ -x "$(which shellcheck)" ]] && SHELLCHECK=true
+	[[ -x "$(which shfmt)" ]] && SHFMT=true
+	[[ -x "$(which prettier)" ]] && PRETTIER=true
 }
 
-function warning
-{
-   echo "junk"
+##function warning
+##{
+##   echo "junk"
+##}
+
+is_text_or_script() {
+	[ -f "$1" ] || return 1 # Ensure it's a file
+	file --mime "$1" | grep -q 'text' && return 0
+	has_shebang "$1" && return 0
+	is_script_or_config "$1" && return 0
+	return 1
 }
-
-
 
 requirements
 
-echo SHELLCHECK = $SHELLCHECK
-echo SHFMT = $SHFMT
-echo PRETTIER = $PRETTIER
+echo "SHELLCHECK = $SHELLCHECK"
+echo "SHFMT = $SHFMT"
+echo "PRETTIER = $PRETTIER"
 
-echo staged_files = $staged_files
-echo shell_files = $shell_files
-echo code_files = $code_files
+echo "staged_files = $staged_files"
+echo "shell_files = $shell_files"
+echo "code_files = $code_files"
 
-if [[ -n "$shell_files" ]]; then
-  echo "Linting shell scripts with shellcheck..."
-  for file in $shell_files; do
-    shellcheck "$file" || exit 1
-  done
+if [[ -n "$staged_files" ]]; then
+	echo "Linting shell scripts with shellcheck..."
+	for file in $staged_files; do
+		if is_text_or_script "$file"; then
+			shellcheck "$file" || exit 1
+		fi
+	done
 
-  echo "Formatting shell scripts with shfmt..."
-  for file in $shell_files; do
-    shfmt -w "$file"
-    git add "$file"
-  done
+	echo "Formatting shell scripts with shfmt..."
+	for file in $staged_files; do
+		if is_text_or_script "$file"; then
+			shfmt -w "$file"
+			git add "$file"
+		fi
+	done
 fi
 
-if [[ -n "$code_files" ]]; then
-  echo "Beautifying code files with prettier..."
-  for file in $code_files; do
-    prettier --write "$file"
-    git add "$file"
-  done
+if [[ -n "$staged_files" ]]; then
+	echo "Beautifying code files with prettier..."
+	for file in $staged_files; do
+		if is_text_or_script "$file"; then
+			prettier --write "$file"
+			git add "$file"
+		fi
+	done
 fi
-
-
 
 echo "pre-commit done"
 
