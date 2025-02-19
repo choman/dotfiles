@@ -2,7 +2,7 @@
 
 transfer() { 
     if [ $# -eq 0  ]; then
-        echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
+        printf "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
         return 1;
     fi
 
