@@ -28,9 +28,6 @@
 [includeIf "gitdir:~/repos/odin/"]
 	path = ~/.config/git/config-odin
 
-[includeIf "gitdir:~/repos/platform1/"]
-	path = ~/.config/git/config-platform1
-
 [credential]
 	helper = 
 ###	helper = !/usr/bin/glab auth git-credential
@@ -39,6 +36,11 @@
 
 {% if yadm.class == "work" %}
 # THIS IS A TEST
+[credential "https://gitlab.com"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
+{% else %}
+# THIS IS A TEST2
 [credential "https://gitlab.com"]
 	helper = 
 	helper = !/usr/bin/glab auth git-credential
