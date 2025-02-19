@@ -36,9 +36,13 @@
 ###	helper = !/usr/bin/glab auth git-credential
 ##	helper = oauth
 
+
+{% if yadm.class == "work" %}
+# THIS IS A TEST
 [credential "https://gitlab.com"]
 	helper = 
 	helper = !/usr/bin/glab auth git-credential
+{% endif %}
 
 [credential "https://gitlab.odin.dso.mil"]
 	username = oauth2
