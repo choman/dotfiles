@@ -35,5 +35,29 @@ echo PRETTIER = $PRETTIER
 echo shell_files = $shell_files
 echo code_files = $code_files
 
+if [[ -n "$shell_files" ]]; then
+  echo "Linting shell scripts with shellcheck..."
+  for file in $shell_files; do
+    shellcheck "$file" || exit 1
+  done
+
+  echo "Formatting shell scripts with shfmt..."
+  for file in $shell_files; do
+    shfmt -w "$file"
+    git add "$file"
+  done
+fi
+
+if [[ -n "$code_files" ]]; then
+  echo "Beautifying code files with prettier..."
+  for file in $code_files; do
+    prettier --write "$file"
+    git add "$file"
+  done
+fi
+
+
+
+echo "pre-commit done"
 
 exit 0
