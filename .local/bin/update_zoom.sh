@@ -4,26 +4,33 @@ url=https://zoom.us/client/latest/
 file=zoom_amd64.deb
 DEBUG=false
 
-function copy_file {
-    newfile="zoom_amd64-${downloadedVer}.deb"
-    [[ ! -f  "$newfile" ]] && cp "${file}" "zoom_amd64-${downloadedVer}.deb"
+DOWNLOAD_DIR="${HOME}/Downloads/packages"
+
+ensure_dest() {
+   mkdir -p "${DOWNLOAD_DIR}"
 }
 
-cd ~/Downloads
+function copy_file {
+    new_file="zoom_amd64-${downloaded_version}.deb"
+    [[ ! -f  "$new_file" ]] && cp "${file}" "${new_file}"
+}
+
+ensure_dest
+cd ${DOWNLOAD_DIR}
 
 wget -qN $url$file
-downloadedVer=$(dpkg -f $file version)
+downloaded_version=$(dpkg -f $file version)
 
-dpkgReport=`dpkg -s zoom`
-echo "$dpkgReport" | grep -q '^Status: install ok' && \
-  installedVer=`echo "$dpkgReport" | grep ^Version: | sed -e 's/Version: //'`
+dpkg_report=$(dpkg -s zoom)
+echo "$dpkg_report" | grep -q '^Status: install ok' && \
+	installed_version=$(echo "$dpkg_report" | grep ^Version: | sed -e 's/Version: //')
 
 if $DEBUG; then
-    echo "\$installedVer = ($installedVer)"
-    echo "\$downloadedVer = ($downloadedVer)"
+    echo "\$installed_version = (${installed_version})"
+    echo "\$downloaded_version = (${downloaded_version})"
 fi
 
-if [[ "$installedVer" != "$downloadedVer" ]]; then
+if [[ "${installed_version}" != "${downloaded_version}" ]]; then
   sudo dpkg -i $file
   copy_file
 else
