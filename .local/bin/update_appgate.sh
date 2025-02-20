@@ -12,9 +12,9 @@ function copy_file {
 cd ~/Downloads
 
 wget -qN $url$file
-downloadedVer=`dpkg -f $file version`
+downloadedVer=$(dpkg -f $file version)
 
-dpkgReport=`dpkg -s appgate`
+dpkgReport=$(dpkg -s appgate)
 echo "$dpkgReport" | grep -q '^Status: install ok' && \
   installedVer=`echo "$dpkgReport" | grep ^Version: | sed -e 's/Version: //'`
 
