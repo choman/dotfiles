@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+[[ ! -d task ]] || eval "$(task --completion bash)"
