@@ -38,3 +38,4 @@ add_or_enable_filter() {
 # Example usage
 add_or_enable_filter "direnv" ".direnv"
 add_or_enable_filter "bundle" ".bundle"
+add_or_enable_filter "preoject-cache" ".cache"
