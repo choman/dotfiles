@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-which task
 
-[[ -x $(which task) ]] && eval "$(task --completion bash)"
+[[ ! -x $(which task) ]] || eval "$(task --completion bash)"
+
