@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+
+function cat() {
+   items=$@
+
+   cmd=$(which cat)
+
+   if which -s batcat; then
+      cmd=$(which batcat)
+   fi
+  
+   if which -s bat; then
+      cmd=$(which bat)
+   fi
+
+   $cmd $@
+
+}
