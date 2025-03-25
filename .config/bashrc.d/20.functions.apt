@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+function uu()
+{
+   cmd=$(which apt-get)
+
+   # turn me into a loop
+   if which -s apt; then
+      cmd=$(which apt)
+   fi
+
+   if which -s apt-fast; then
+      cmd=$(which apt-fast)
+   fi
+
+   sudo $cmd update;  sudo $cmd dist-upgrade -y
+}
