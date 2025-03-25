@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+function clean()
+{
+   cmd=$(which apt-get)
+   
+   if which -s apt; then
+      cmd=$(which apt-get)
+   }
+
+   sudo $cmd autoclean 
+   sudo $cmd autoremove -y 
+}
+
