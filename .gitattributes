@@ -1,2 +1,3 @@
 .config/goto##class.work  filter=crypt diff=crypt merge=crypt
 .config/direnv/direnvrc##class.work  filter=crypt diff=crypt merge=crypt
+.work  filter=crypt diff=crypt merge=crypt
