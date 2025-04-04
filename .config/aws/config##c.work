@@ -1,20 +1,7 @@
-[default]
-region = us-gov-west-1
-output = json
-
-[profile odin_engineer]
-region = us-gov-west-1
-output = json
-
-[profile dev_transit_gov]
-region = us-gov-west-1
-output = json
-
-[profile dev_tenant_gov]
-region = us-gov-west-1
-output = json
-
-[profile dev_gov]
-region = us-gov-west-1
-output = json
-
+U2FsdGVkX1/67R0h4prRLYGbze8rF2DCDt0EmrnLHB9szQiFCQZIRrjldvh2hhve
+Xz13PSUfxSrUTzA7AYR1ogqQnlH1U3F59VOIufvUXdYkdPKjSduiCiaV9IGa4c2T
+k4ul12uO7vu7VwY6kbtEuTf5yf3Goeghr+OuzVJohuTV7fWMCAAdQ6wlt+aHGpvA
+VINdBJdEjtYreqvZTpYh3bkJEQjSPdxOyRg0E+BddpeEC4W85lsIFISs07SN8pkn
+8nI+28smADpPbnAOPBS+5lwqesHk+Y2ssSELWekhj+jdM4pYQrhpaPx6qWE8CYEQ
+PL8nq5DIxH3OoL96VOU36Cb0IVJFoX8uuIan5M38+y/2tOcd5XHclCrRQxrccwMN
+xhihX47zHXKW/Y+L0s1FFp4KHAEFYHpy+Djn/ut1Xvk=
