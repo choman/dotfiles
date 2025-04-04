@@ -38,9 +38,7 @@
 ## Cred helpers
 ##############################################
 [include]
-###{% if "$(file ~/.config/git/credhelper.thor)" == "ASCII" %}
-###	path = ~/.config/git/credhelper.thor
-###{% endif %}
+        path = ~/.config/git/credhelper.thor
 	path = ~/.config/git/credhelper.caci
 
 {% if yadm.class == "work" %}
