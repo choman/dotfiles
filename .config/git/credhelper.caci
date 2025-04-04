@@ -1,0 +1,6 @@
+[credential "https://gitlab.csde.caci.com"]
+        username = oauth2
+        helper = "!~/.local/bin/gopass-git.sh caci-csde/GITLAB_TOKEN"
+#       helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
+#       helper = "echo \"password=$(gopass show -o test1)\""
+

@@ -12,7 +12,6 @@
 # Allow local customizations in the .gitconfig_local file
 [include]
 	path = ~/.config/git/config_local
-	path = ~/.config/git/credhelper.thor
 
 [alias]
     lg = log --topo-order --all --graph --date=local --pretty=format:'%C(green)%h%C(reset) %><(55,trunc)%s%C(red)%d%C(reset) %C(blue)[%an]%C(reset) %C(yellow)%ad%C(reset)%n'
@@ -35,6 +34,15 @@
 ##	helper = oauth
 
 
+##############################################
+## Cred helpers
+##############################################
+[includeIf "exists:~/.config/git/credhelper.thor"]
+	path = ~/.config/git/credhelper.thor
+
+[includeIf "exists:~/.config/git/credhelper.caci"]
+	path = ~/.config/git/credhelper.caci
+
 {% if yadm.class == "work" %}
 # THIS IS A TEST
 [credential "https://gitlab.com"]
@@ -55,11 +63,11 @@
 ## #	helper = gopass --store=test1
 ## #	helper = oauth
 
-[credential "https://gitlab.csde.caci.com"]
-	username = oauth2
-	helper = "!~/.local/bin/gopass-git.sh caci-csde/GITLAB_TOKEN"
-#	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
-#	helper = "echo \"password=$(gopass show -o test1)\""
+## [credential "https://gitlab.csde.caci.com"]
+## 	username = oauth2
+## 	helper = "!~/.local/bin/gopass-git.sh caci-csde/GITLAB_TOKEN"
+## #	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
+## #	helper = "echo \"password=$(gopass show -o test1)\""
 
 [credential "https://gitlab.example.com"]
 	oauthScopes = read_repository
