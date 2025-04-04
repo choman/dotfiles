@@ -37,10 +37,8 @@
 ##############################################
 ## Cred helpers
 ##############################################
-[includeIf "exists:~/.config/git/credhelper.thor"]
+[include]
 	path = ~/.config/git/credhelper.thor
-
-[includeIf "exists:~/.config/git/credhelper.caci"]
 	path = ~/.config/git/credhelper.caci
 
 {% if yadm.class == "work" %}
