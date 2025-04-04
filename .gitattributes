@@ -3,4 +3,5 @@
 .config/aws/config##c.work  filter=crypt diff=crypt merge=crypt
 .config/aws/credentials##c.homework  filter=crypt diff=crypt merge=crypt
 .ssh/config##c.work  filter=crypt diff=crypt merge=crypt
+.config/git/credhelper.thor  filter=crypt diff=crypt merge=crypt
 .work  filter=crypt diff=crypt merge=crypt
