@@ -1,2 +1,2 @@
-.config/test##c.work filter=git-crypt diff=git-crypt
 .config/goto##class.work  filter=crypt diff=crypt merge=crypt
+.config/direnv/direnvrc##class.work  filter=crypt diff=crypt merge=crypt
