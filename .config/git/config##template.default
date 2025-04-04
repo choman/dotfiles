@@ -47,13 +47,13 @@
 	helper = !/usr/bin/glab auth git-credential
 {% endif %}
 
-[credential "https://gitlab.odin.dso.mil"]
-	username = oauth2
-	helper = "!~/.local/bin/gopass-git.sh oadcgs/odin/gitlab_token"
-#	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
-#	helper = "echo \"password=$(gopass show -o test1)\""
-#	helper = gopass --store=test1
-#	helper = oauth
+## [credential "https://gitlab.odin.dso.mil"]
+## 	username = oauth2
+## 	helper = "!~/.local/bin/gopass-git.sh oadcgs/odin/gitlab_token"
+## #	helper = "!f() { test \"$1\" = store && echo \"password=$(gopass show -o test1)\"; }; f"
+## #	helper = "echo \"password=$(gopass show -o test1)\""
+## #	helper = gopass --store=test1
+## #	helper = oauth
 
 [credential "https://gitlab.csde.caci.com"]
 	username = oauth2
