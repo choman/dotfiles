@@ -56,33 +56,6 @@ export_function() {
 export REPO_BASE=$(git rev-parse --show-toplevel)
 
 
-if [[ ! -d "/home/choman/repos/caci/speedofme" ]]; then
-    export JIRA_API_TOKEN=$(gopass show -o oadcgs/platform1/JIRA_API_TOKEN)
-
-
-  if false; then
-    export RHEL_SUBSCRIPTION_USER=C-Homan-DCW
-    export RHEL_SUBSCRIPTION_PASSWORD=$(gopass show oadcgs/rhel/${RHEL_SUBSCRIPTION_USER})
-    export DI2E_USER=chad.homan
-    export DI2E_PASSWORD=$(gopass show di2e/chad.homan)
-    export NEXUS3_USERNAME=chad.homan
-    export NEXUS3_PASSWORD=$(gopass show di2e/chad.homan)
-    export NEXUS3_URL=https://nexus.di2e.net/nexus3
-    export NEXUS3_LOGIN_URL=https://nexus.di2e.net/nexus3
-    export NEXUS3_LOGIN_USERNAME=chad.homan
-    export NEXUS3_LOGIN_PASSWORD=$(gopass show di2e/chad.homan)
-    export REPOSITORY_USER=chad.homan
-    export REPOSITORY_PASSWORD=$(gopass show di2e/chad.homan)
-    export REPOSITORY_URL=https://nexus.di2e.net/nexus3
-    export OS_FACTORY_BOOT_WAIT=10s
-    export ENVRC_CACHE="$(git rev-parse --show-toplevel)/.envrc.cache"
-  fi
-fi 
-
-# SSL CERT FILE Variables
-export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-export NODE_EXTRA_CA_CERTS="${SSL_CERT_FILE}"
-export REQUESTS_CA_BUNDLE="${SSL_CERT_FILE}"
 
 # Watch gopass stores
 GOPASS_STORES=$(find ~/.local/share/gopass/stores/* -name "*.gpg")
