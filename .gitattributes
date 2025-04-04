@@ -3,3 +3,4 @@
 .work  filter=crypt diff=crypt merge=crypt
 .config/aws/config##c.work  filter=crypt diff=crypt merge=crypt
 .config/aws/credentials##c.homework  filter=crypt diff=crypt merge=crypt
+config##c.work  filter=crypt diff=crypt merge=crypt
