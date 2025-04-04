@@ -6,10 +6,10 @@ import os
 PATH = os.getcwd()
 PATH = "/home/choman/.jira.d"
 
-JIRA = "https://jira.di2e.net"
+JIRA = "https://jira.broke.net"
 USERNAME = "chad.homan"
-PROJECT = "OADCGS"
-PROJECT_SHORT = "di2e"
+PROJECT = "BADPROJECT"
+PROJECT_SHORT = "BADSHORT"
 
 CONFIG = {}
 
