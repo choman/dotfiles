@@ -6,6 +6,9 @@
 #  - other linter types
 #
 #
+#
+
+~/.config/yadm/hooks/pre_commit-git-check
 exit 0
 
 # Get staged files, ignoring deleted files
