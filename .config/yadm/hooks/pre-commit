@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export GIT_TEST2=4982
+
+echo Hi
