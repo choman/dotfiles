@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-CREDHELPER="~/.config/git/credhelper.thor"
+GIT_CREDHELPERS="~/.config/git/credhelper.*"
 GIT_CRED_STATUS="${YADM_HOOK_DATA}/cred"
 GIT_CRED_STATUS="${YADM_HOOK_DATA}/cred"
 ls -lad ${YADM_HOOK_DATA}
+
+for filename in $(ls "${GIT_CREDHELPERS}")
+do
+  echo $filename
+done
 
 
 export GIT_CRYPT_STATUS=crap
