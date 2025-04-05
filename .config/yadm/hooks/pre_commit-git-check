@@ -7,7 +7,7 @@ ls -lad ${YADM_HOOK_DATA}
 
 for filename in $(ls "${GIT_CREDHELPERS}")
 do
-  echo $filename
+  echo "\$filename  = $filename"
 done
 
 
