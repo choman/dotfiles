@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
 
+CREDHELPER="~/.config/git/credhelper.thor"
+GIT_CRED_STATUS="${YADM_HOOK_DATA}/cred"
+GIT_CRED_STATUS="${YADM_HOOK_DATA}/cred"
+ls -lad ${YADM_HOOK_DATA}
+
 
 export GIT_CRYPT_STATUS=crap
+if [[ ! -f "${CREDHELPER}" ]]; then
+    touch "${GIT_CRED_STATUS}"
+fi
+
 git config --file ~/.config/git/credhelper.thor --list
 rval=$?
-echo $YADM_HOOK_DATA
+if [[ $? -ne 0 ]]; then 
+    touch "${GIT_CRED_STATUS}"
+fi
 
+touch "${GIT_CRED_STATUS}"
