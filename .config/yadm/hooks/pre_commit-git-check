@@ -2,3 +2,7 @@
 
 
 export GIT_CRYPT_STATUS=crap
+git config --file ~/.config/git/credhelper.thor --list
+rval=$?
+echo $YADM_HOOK_DATA
+
