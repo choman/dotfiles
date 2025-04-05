@@ -9,7 +9,7 @@
 #
 
 echo "Testing"
-${HOME}/.config/yadm/hooks/pre_commit-git-check
+source ${HOME}/.config/yadm/hooks/pre_commit-git-check
 echo "Testing - Bye"
 exit 0
 
