@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+
+expport GIT_CRYPT_STATUS=crap
