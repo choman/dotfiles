@@ -38,12 +38,12 @@
 ## Cred helpers
 ##############################################
 [include]
-{% if env.CRED_DECRYPT == "0" %}
-        path = ~/.config/git/credhelper.thor
-{% endif %}
+##{% if env.CRED_DECRYPT == "0" %}
+##        path = ~/.config/git/credhelper.thor
+##{% endif %}
 	path = ~/.config/git/credhelper.caci
 
-##{% include "/home/{{ yadm.user }/.config/.git/credhelper.that" %}
+{% include "/home/{{ yadm.user }/.config/.git/credhelper.thor" %}
 
 {% if yadm.class == "work" %}
 # THIS IS A TEST
