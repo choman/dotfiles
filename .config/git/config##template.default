@@ -43,7 +43,7 @@
 {% endif %}
 	path = ~/.config/git/credhelper.caci
 
-###{% include "${HOME}/.config/.git/credhelper.that" %}
+###{% include "{{ yadm.home }/.config/.git/credhelper.that" %}
 
 {% if yadm.class == "work" %}
 # THIS IS A TEST
