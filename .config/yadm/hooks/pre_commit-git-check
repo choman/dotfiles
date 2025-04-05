@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GIT_CREDHELPERS="~/.config/git/credhelper.*"
+GIT_CREDHELPERS="${HOME}/.config/git/credhelper.*"
 GIT_CRED_STATUS="${YADM_HOOK_DATA}/cred"
 GIT_CRED_STATUS="${YADM_HOOK_DATA}/cred"
 ls -lad ${YADM_HOOK_DATA}
