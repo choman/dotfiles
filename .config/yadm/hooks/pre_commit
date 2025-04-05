@@ -10,6 +10,7 @@
 
 echo "Testing"
 source ${HOME}/.config/yadm/hooks/pre_commit-git-check
+env | grep GIT
 echo "Testing - Bye"
 exit 0
 
