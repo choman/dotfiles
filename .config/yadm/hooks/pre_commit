@@ -8,7 +8,9 @@
 #
 #
 
+echo "Testing"
 ~/.config/yadm/hooks/pre_commit-git-check
+echo "Testing - Bye"
 exit 0
 
 # Get staged files, ignoring deleted files
